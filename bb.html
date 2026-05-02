@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#050505">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>BLACK BONE — EXAM PREP</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Nunito+Sans:wght@300;400;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root,[data-theme="blackbone"]{--bg:#050505;--bg2:#0a0a0a;--card:#1a1816;--card2:#221f1c;--tx:#e8dcc8;--txs:#f5f0e8;--txm:rgba(232,220,200,0.55);--ac:#c4a882;--ac2:#8b1a1a;--bd:rgba(58,54,50,0.25);--bdh:#c4a882;--ok:#2d6a4f;--okg:rgba(45,106,79,0.15);--no:#8b1a1a;--nog:rgba(139,26,26,0.15);--gl:rgba(5,5,5,0.85);--gh:rgba(232,220,200,0.06);--gr:0.5;--sel:#8b1a1a;--selt:#f5f0e8;--inbg:transparent;--inbd:rgba(58,54,50,0.4);--tbd:rgba(58,54,50,0.15)}
+[data-theme="surgical"]{--bg:#0b1120;--bg2:#070d19;--card:#111b30;--card2:#162242;--tx:#c5d0e6;--txs:#e8edf7;--txm:rgba(197,208,230,0.5);--ac:#4a90d9;--ac2:#1b5fa0;--bd:rgba(74,144,217,0.15);--bdh:#4a90d9;--ok:#2d8a5e;--okg:rgba(45,138,94,0.12);--no:#c0392b;--nog:rgba(192,57,43,0.12);--gl:rgba(11,17,32,0.9);--gh:rgba(74,144,217,0.05);--gr:0.25;--sel:#1b5fa0;--selt:#e8edf7;--inbg:rgba(74,144,217,0.06);--inbd:rgba(74,144,217,0.2);--tbd:rgba(74,144,217,0.1)}
+[data-theme="cadaver"]{--bg:#0a110a;--bg2:#060d06;--card:#142014;--card2:#1a2c1a;--tx:#b8ccb0;--txs:#d6e8ce;--txm:rgba(184,204,176,0.5);--ac:#5a9e5a;--ac2:#2e5e2e;--bd:rgba(90,158,90,0.18);--bdh:#5a9e5a;--ok:#3a8a3a;--okg:rgba(58,138,58,0.12);--no:#a04030;--nog:rgba(160,64,48,0.12);--gl:rgba(10,17,10,0.9);--gh:rgba(90,158,90,0.04);--gr:0.35;--sel:#2e5e2e;--selt:#d6e8ce;--inbg:rgba(90,158,90,0.06);--inbd:rgba(90,158,90,0.2);--tbd:rgba(90,158,90,0.1)}
+[data-theme="crimson"]{--bg:#110505;--bg2:#0d0303;--card:#201010;--card2:#2c1414;--tx:#d4b8b0;--txs:#f0d8d0;--txm:rgba(212,184,176,0.5);--ac:#c0574a;--ac2:#8b1a1a;--bd:rgba(192,87,74,0.18);--bdh:#c0574a;--ok:#3a7a50;--okg:rgba(58,122,80,0.12);--no:#d44030;--nog:rgba(212,64,48,0.15);--gl:rgba(17,5,5,0.9);--gh:rgba(192,87,74,0.04);--gr:0.4;--sel:#8b1a1a;--selt:#f0d8d0;--inbg:rgba(192,87,74,0.06);--inbd:rgba(192,87,74,0.2);--tbd:rgba(192,87,74,0.1)}
+[data-theme="whitecoat"]{--bg:#f4f2ee;--bg2:#eae7e0;--card:#ffffff;--card2:#f9f8f5;--tx:#3a3632;--txs:#1a1714;--txm:rgba(58,54,50,0.55);--ac:#2a6b4a;--ac2:#1a4a32;--bd:rgba(58,54,50,0.12);--bdh:#2a6b4a;--ok:#1a7a40;--okg:rgba(26,122,64,0.1);--no:#c0392b;--nog:rgba(192,57,43,0.08);--gl:rgba(244,242,238,0.92);--gh:rgba(42,107,74,0.04);--gr:0.08;--sel:#2a6b4a;--selt:#fff;--inbg:#fff;--inbd:rgba(58,54,50,0.18);--tbd:rgba(58,54,50,0.08)}
+
+/* COLOR ACCENT OVERRIDE */
+[data-color="bone"]{--ac:#c4a882;--bdh:#c4a882}
+[data-color="gold"]{--ac:#d4a843;--bdh:#d4a843}
+[data-color="coral"]{--ac:#e07060;--bdh:#e07060}
+[data-color="teal"]{--ac:#2ec4b6;--bdh:#2ec4b6}
+[data-color="violet"]{--ac:#9b72cf;--bdh:#9b72cf}
+[data-color="sky"]{--ac:#4a9fd9;--bdh:#4a9fd9}
+[data-color="mint"]{--ac:#4ecdc4;--bdh:#4ecdc4}
+[data-color="rose"]{--ac:#d47b8a;--bdh:#d47b8a}
+[data-color="amber"]{--ac:#e8a040;--bdh:#e8a040}
+[data-color="lime"]{--ac:#84cc16;--bdh:#84cc16}
+[data-color="ice"]{--ac:#7dd3fc;--bdh:#7dd3fc}
+[data-color="peach"]{--ac:#fb923c;--bdh:#fb923c}
+
+/* APP-LEVEL FONT SIZE */
+[data-appsize="xs"] {--as:0.82;--aui:0.44rem}
+[data-appsize="s"]  {--as:0.9;--aui:0.48rem}
+[data-appsize="m"]  {--as:1.0;--aui:0.54rem}
+[data-appsize="l"]  {--as:1.1;--aui:0.6rem}
+[data-appsize="xl"] {--as:1.2;--aui:0.66rem}
+[data-appsize="2xl"]{--as:1.3;--aui:0.72rem}
+[data-appsize="3xl"]{--as:1.4;--aui:0.78rem}
+[data-appsize="4xl"]{--as:1.5;--aui:0.84rem}
+[data-appsize="5xl"]{--as:1.6;--aui:0.9rem}
+
+/* Q-LEVEL FONT SIZE */
+[data-qsize="xs"] {--qs:0.82rem;--ql:1.6}
+[data-qsize="s"]  {--qs:0.9rem;--ql:1.7}
+[data-qsize="m"]  {--qs:1.0rem;--ql:1.85}
+[data-qsize="l"]  {--qs:1.12rem;--ql:1.95}
+[data-qsize="xl"] {--qs:1.22rem;--ql:2.05}
+[data-qsize="2xl"]{--qs:1.34rem;--ql:2.15}
+[data-qsize="3xl"]{--qs:1.46rem;--ql:2.2}
+[data-qsize="4xl"]{--qs:1.58rem;--ql:2.25}
+[data-qsize="5xl"]{--qs:1.7rem;--ql:2.3}
+
+/* FONT FAMILY */
+[data-font="garamond"]{--ff:'Cormorant Garamond',serif;--fd:'Syne',sans-serif;--fm:'Space Mono',monospace}
+[data-font="plex"]    {--ff:'IBM Plex Sans',sans-serif;--fd:'Syne',sans-serif;--fm:'JetBrains Mono',monospace}
+[data-font="lora"]    {--ff:'Lora',serif;--fd:'Syne',sans-serif;--fm:'Space Mono',monospace}
+[data-font="nunito"]  {--ff:'Nunito Sans',sans-serif;--fd:'Nunito Sans',sans-serif;--fm:'JetBrains Mono',monospace}
+[data-font="source"]  {--ff:'Source Serif 4',serif;--fd:'Syne',sans-serif;--fm:'JetBrains Mono',monospace}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--bd) var(--bg)}
+body{background:var(--bg);color:var(--tx);font-family:var(--ff);font-size:calc(1rem * var(--as));line-height:1.7;overflow-x:hidden;min-height:100dvh;transition:background .4s,color .4s}
+::selection{background:var(--sel);color:var(--selt)}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:var(--gr)}
+
+.loader{position:fixed;inset:0;background:var(--bg);z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.2rem;transition:opacity .8s,visibility .8s}
+.loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-bone{width:60px;height:4px;background:var(--tx);position:relative;animation:lp 1.2s ease-in-out infinite}
+.loader-bone::before,.loader-bone::after{content:'';position:absolute;width:14px;height:14px;border-radius:50%;background:var(--tx);top:50%;transform:translateY(-50%)}
+.loader-bone::before{left:-7px}.loader-bone::after{right:-7px}
+.loader-text{font-family:var(--fm);font-size:.5rem;letter-spacing:.5em;text-transform:uppercase;color:var(--txm)}
+@keyframes lp{0%,100%{opacity:.3;transform:scaleX(1)}50%{opacity:1;transform:scaleX(1.3)}}
+
+.screen{display:none;min-height:100dvh;animation:fi .4s ease}.screen.active{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* AUTH */
+.aw{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;position:relative}
+.abg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 40%,var(--gh) 0%,transparent 70%)}
+.ac{position:relative;z-index:1;width:100%;max-width:400px}
+.abr{text-align:center;margin-bottom:2rem}
+.abr h1{font-family:var(--fd);font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;color:var(--txs);line-height:.95}
+.abr h1 .ol{-webkit-text-stroke:1px var(--tx);color:transparent}
+.abr p{font-family:var(--fm);font-size:var(--aui);letter-spacing:.4em;text-transform:uppercase;color:var(--ac);margin-top:.5rem}
+.af{display:flex;flex-direction:column;gap:1rem}
+.af label{display:block;font-family:var(--fm);font-size:calc(var(--aui) - .02rem);letter-spacing:.2em;text-transform:uppercase;color:var(--txm);margin-bottom:.3rem}
+.af input,.af select{width:100%;background:var(--inbg);border:1px solid var(--inbd);border-radius:2px;padding:.8rem .9rem;font-family:var(--ff);font-size:calc(.95rem * var(--as));color:var(--txs);outline:none;transition:border-color .3s}
+.af input:focus,.af select:focus{border-color:var(--ac)}
+.af input::placeholder{color:var(--txm);font-style:italic}
+.af select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23888' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .8rem center}
+.aerr{font-family:var(--fm);font-size:calc(var(--aui) - .02rem);color:var(--no);letter-spacing:.12em;min-height:1rem;text-align:center}
+.adiv{display:flex;align-items:center;gap:.8rem;margin:.4rem 0}
+.adiv span{font-family:var(--fm);font-size:var(--aui);letter-spacing:.3em;text-transform:uppercase;color:var(--txm)}
+.adiv::before,.adiv::after{content:'';flex:1;height:1px;background:var(--bd)}
+.asw{text-align:center;font-family:var(--fm);font-size:var(--aui);letter-spacing:.12em;color:var(--txm)}
+.asw a{color:var(--ac);text-decoration:none;cursor:pointer}
+.ask{text-align:center;margin-top:.6rem}
+.ask a{font-family:var(--fm);font-size:var(--aui);letter-spacing:.15em;text-transform:uppercase;color:var(--txm);text-decoration:none;cursor:pointer;opacity:.6}
+
+/* DP PICKER */
+.dp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;margin-top:.5rem}
+.dp-item{width:100%;aspect-ratio:1;border-radius:50%;border:2px solid var(--bd);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:calc(1.3rem * var(--as));transition:all .3s;background:var(--card)}
+.dp-item:active{transform:scale(.9)}
+.dp-item.active{border-color:var(--ac);background:var(--gh);box-shadow:0 0 12px rgba(196,168,130,.15)}
+
+/* TOPBAR */
+.tb{position:sticky;top:0;z-index:100;padding:.7rem 1.2rem;display:flex;justify-content:space-between;align-items:center;background:var(--gl);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--tbd);transition:background .4s}
+.tbn{font-family:var(--fd);font-weight:800;font-size:calc(.68rem * var(--as));letter-spacing:.25em;text-transform:uppercase;color:var(--txs)}
+.tbn small{font-family:var(--fm);font-weight:400;font-size:calc(.44rem * var(--as));letter-spacing:.15em;color:var(--ac);display:block;margin-top:1px}
+.tbr{display:flex;align-items:center;gap:.8rem}
+.tbs{text-align:center}
+.tbs .v{font-family:var(--fd);font-weight:700;font-size:calc(.8rem * var(--as));color:var(--txs)}
+.tbs .l{font-family:var(--fm);font-size:calc(.38rem * var(--as));letter-spacing:.15em;text-transform:uppercase;color:var(--txm)}
+.xb{width:45px;height:3px;background:var(--bd);border-radius:2px;overflow:hidden;margin-top:2px}
+.xbf{height:100%;background:var(--ac);border-radius:2px;transition:width .6s}
+.sbtn{background:none;border:1px solid var(--bd);color:var(--txm);width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:calc(.85rem * var(--as));transition:all .3s;border-radius:2px}
+.sbtn:active{border-color:var(--ac);color:var(--ac)}
+
+/* HOME */
+.hh{padding:2rem 1.5rem;text-align:center;position:relative;overflow:hidden}
+.hhbg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 40%,var(--gh),transparent 70%)}
+.hh *{position:relative;z-index:1}
+.hpre{font-family:var(--fm);font-size:var(--aui);letter-spacing:.5em;text-transform:uppercase;color:var(--ac);margin-bottom:.6rem}
+.ht{font-family:var(--fd);font-size:clamp(2rem,6.5vw,4rem);font-weight:800;line-height:.9;letter-spacing:-.03em;color:var(--txs)}
+.ht .ol{-webkit-text-stroke:1px var(--tx);color:transparent}
+.hsub{font-size:calc(1rem * var(--as));font-weight:300;font-style:italic;color:var(--ac);margin-top:.6rem}
+.ug{font-family:var(--fm);font-size:var(--aui);letter-spacing:.2em;color:var(--txm);margin-top:.8rem;text-transform:uppercase}
+.ug .udp{font-size:calc(1.2rem * var(--as));margin-right:.3rem;vertical-align:middle}
+
+.sb{margin:1rem 1.5rem;padding:.9rem 1rem;background:linear-gradient(135deg,rgba(139,26,26,.08),rgba(196,168,130,.05));border:1px solid var(--bd);border-radius:2px;display:flex;align-items:center;gap:.7rem}
+.sf{font-size:calc(1.4rem * var(--as));line-height:1}
+.si .sc{font-family:var(--fd);font-weight:700;font-size:calc(.95rem * var(--as));color:var(--txs)}
+.si .sl{font-family:var(--fm);font-size:calc(var(--aui) - .03rem);letter-spacing:.2em;text-transform:uppercase;color:var(--ac)}
+
+.ms{padding:0 1.5rem 1rem}
+.ml{font-family:var(--fm);font-size:var(--aui);letter-spacing:.4em;text-transform:uppercase;color:var(--ac);margin-bottom:.7rem;display:flex;align-items:center;gap:.6rem}
+.ml::before{content:'';width:16px;height:1px;background:var(--ac)}
+.mg{display:grid;grid-template-columns:repeat(var(--tilecols,2),1fr);gap:calc(.6rem * var(--tilegap,1));transition:all .35s ease}
+.mc{background:var(--card);border:1px solid var(--bd);padding:calc(var(--tilepad,1.1rem));cursor:pointer;transition:all .3s;border-radius:2px;overflow:hidden}
+.mc:active{transform:scale(.98);border-color:var(--bdh)}
+.mci{font-size:calc(var(--tileicon,1.3rem) * var(--as));margin-bottom:calc(var(--tilepad,1.1rem) * .4);transition:font-size .3s}
+.mct{font-family:var(--fd);font-weight:700;font-size:calc(var(--tiletitle,.85rem) * var(--as));color:var(--txs);margin-bottom:.1rem;transition:font-size .3s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mcd{font-family:var(--fm);font-size:calc(var(--tiledesc,.42rem) * var(--as));letter-spacing:.08em;color:var(--txm);text-transform:uppercase;transition:font-size .3s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mc.full{grid-column:1/-1}
+.mc.bl{border-color:rgba(139,26,26,.25)}
+/* TILE SLIDER SIZES */
+[data-tiles="1"]{--tilecols:1;--tilepad:1.5rem;--tileicon:2rem;--tiletitle:1rem;--tiledesc:.5rem;--tilegap:1.2}
+[data-tiles="2"]{--tilecols:2;--tilepad:1.1rem;--tileicon:1.3rem;--tiletitle:.85rem;--tiledesc:.42rem;--tilegap:1}
+[data-tiles="3"]{--tilecols:3;--tilepad:.8rem;--tileicon:1.1rem;--tiletitle:.72rem;--tiledesc:.36rem;--tilegap:.85}
+[data-tiles="4"]{--tilecols:4;--tilepad:.55rem;--tileicon:.9rem;--tiletitle:.6rem;--tiledesc:.3rem;--tilegap:.7}
+[data-tiles="5"]{--tilecols:5;--tilepad:.4rem;--tileicon:.75rem;--tiletitle:.52rem;--tiledesc:.26rem;--tilegap:.6}
+[data-tiles="6"]{--tilecols:6;--tilepad:.3rem;--tileicon:.65rem;--tiletitle:.45rem;--tiledesc:.22rem;--tilegap:.5}
+
+/* SETTINGS */
+.ss{padding:1rem 1.5rem;border-bottom:1px solid var(--bd)}
+.sst{font-family:var(--fd);font-weight:700;font-size:calc(.8rem * var(--as));letter-spacing:.12em;text-transform:uppercase;color:var(--txs);margin-bottom:.8rem}
+.tgr{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.4rem}
+.tp{padding:.7rem;border:1px solid var(--bd);border-radius:2px;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:.6rem}
+.tp:active{transform:scale(.97)}
+.tp.a{border-color:var(--ac);background:var(--gh)}
+.td{width:20px;height:20px;border-radius:50%;flex-shrink:0;border:2px solid rgba(255,255,255,.1)}
+.tpn{font-family:var(--fd);font-weight:600;font-size:calc(.72rem * var(--as));color:var(--txs)}
+.tps{font-family:var(--fm);font-size:calc(.38rem * var(--as));letter-spacing:.12em;text-transform:uppercase;color:var(--txm)}
+
+/* COLOR GRID */
+.cgr{display:grid;grid-template-columns:repeat(6,1fr);gap:.5rem;margin-top:.4rem}
+.cdot{width:100%;aspect-ratio:1;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .3s;position:relative}
+.cdot:active{transform:scale(.85)}
+.cdot.a{border-color:var(--txs);box-shadow:0 0 8px rgba(255,255,255,.15)}
+.cdot.a::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+
+/* SIZE PILLS */
+.sr{display:flex;gap:.35rem;margin-top:.4rem;flex-wrap:wrap}
+.sp{flex:1;min-width:0;padding:.55rem .2rem;text-align:center;border:1px solid var(--bd);border-radius:2px;cursor:pointer;font-family:var(--fm);font-size:calc(var(--aui) - .04rem);letter-spacing:.15em;text-transform:uppercase;color:var(--txm);transition:all .3s}
+.sp:active{transform:scale(.93)}
+.sp.a{border-color:var(--ac);color:var(--ac);background:var(--gh)}
+
+/* FONT PILLS */
+.fl{display:flex;flex-direction:column;gap:.4rem;margin-top:.4rem}
+.fp{padding:.65rem .9rem;border:1px solid var(--bd);border-radius:2px;cursor:pointer;transition:all .3s;display:flex;justify-content:space-between;align-items:center}
+.fp:active{transform:scale(.98)}
+.fp.a{border-color:var(--ac);background:var(--gh)}
+.fpn{font-size:calc(.9rem * var(--as));color:var(--txs)}
+.fps{font-size:calc(.65rem * var(--as));color:var(--txm)}
+
+/* ICON THEME PILLS */
+.igr{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.4rem}
+.ip{padding:.7rem;border:1px solid var(--bd);border-radius:2px;cursor:pointer;transition:all .3s;text-align:center}
+.ip:active{transform:scale(.97)}
+.ip.a{border-color:var(--ac);background:var(--gh)}
+.ip .icons{font-size:calc(1.1rem * var(--as));letter-spacing:.3em;margin-bottom:.3rem}
+.ip .iname{font-family:var(--fd);font-weight:600;font-size:calc(.68rem * var(--as));color:var(--txs)}
+
+/* PREVIEW BOX */
+.pvw{padding:.7rem;border:1px solid var(--bd);border-radius:2px;background:var(--card);margin-top:.5rem}
+.pvw .pv{font-size:var(--qs);line-height:var(--ql);color:var(--tx)}
+.pvw .pv strong{color:var(--txs)}
+.pvw .pstem{font-family:var(--fd);font-weight:600;font-size:var(--qs);color:var(--txs);margin-top:.4rem}
+
+/* PROFILE */
+.pcard{margin:0 1.5rem .8rem;padding:1rem;border:1px solid var(--bd);border-radius:2px;display:flex;align-items:center;gap:.8rem}
+.pav{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:calc(1.4rem * var(--as));background:var(--card);border:1px solid var(--bd)}
+.pname{font-family:var(--fd);font-weight:600;font-size:calc(.85rem * var(--as));color:var(--txs)}
+.pemail{font-family:var(--fm);font-size:calc(var(--aui) - .02rem);color:var(--txm);letter-spacing:.08em}
+
+/* SUBJECT LIST */
+.sjl{padding:0 1.5rem 2rem}
+.sji{display:flex;justify-content:space-between;align-items:center;padding:.9rem 0;border-bottom:1px solid var(--bd);cursor:pointer;transition:all .3s}
+.sji:active{padding-left:.5rem;border-color:var(--ac)}
+.sjn{font-family:var(--fd);font-weight:600;font-size:calc(.95rem * var(--as));color:var(--txs)}
+.sjc{font-family:var(--fm);font-size:var(--aui);letter-spacing:.15em;color:var(--txm)}
+.sjp{width:38px;height:3px;background:var(--bd);border-radius:2px;overflow:hidden}
+.sjpf{height:100%;background:var(--ac);border-radius:2px}
+
+/* QUESTION */
+.qh{padding:.7rem 1.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--tbd)}
+.qctr{font-family:var(--fm);font-size:var(--aui);letter-spacing:.15em;color:var(--txm);text-transform:uppercase}
+.qtm{font-family:var(--fd);font-weight:700;font-size:calc(.95rem * var(--as));color:var(--txs)}
+.qtm.w{color:var(--no);animation:tp 1s ease infinite}
+@keyframes tp{0%,100%{opacity:1}50%{opacity:.5}}
+.qpg{height:2px;background:var(--bd)}.qpgf{height:100%;background:var(--ac);transition:width .4s}
+.qst{font-family:var(--fm);font-size:calc(var(--aui) - .02rem);letter-spacing:.25em;color:var(--ac2);text-transform:uppercase;padding:.6rem 1.5rem 0}
+.qv{padding:.9rem 1.5rem;font-size:var(--qs);line-height:var(--ql);color:var(--tx)}
+.qv strong{color:var(--txs);font-weight:600}
+.qstem{padding:0 1.5rem .7rem;font-family:var(--fd);font-weight:600;font-size:var(--qs);color:var(--txs);line-height:1.5}
+.qos{padding:0 1.5rem 1rem;display:flex;flex-direction:column;gap:.45rem}
+.qo{display:flex;align-items:flex-start;gap:.6rem;padding:.8rem .9rem;border:1px solid var(--bd);background:var(--card);cursor:pointer;transition:all .3s;border-radius:2px}
+.qo:active{transform:scale(.99)}
+.qo.sel{border-color:var(--ac);background:var(--gh)}
+.qo.ok{border-color:var(--ok);background:var(--okg)}
+.qo.no{border-color:var(--no);background:var(--nog)}
+.qo.ok .ol2{color:var(--ok);border-color:var(--ok)}
+.qo.no .ol2{color:var(--no);border-color:var(--no)}
+.qo.dim{opacity:.3}
+.ol2{font-family:var(--fd);font-weight:700;font-size:calc(.65rem * var(--as));color:var(--txm);border:1px solid var(--bd);width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;border-radius:2px}
+.ot{font-size:calc(var(--qs) - .05rem);line-height:1.55;color:var(--tx);flex:1}
+.qex{margin:0 1.5rem 1rem;padding:.9rem 1rem;border-left:3px solid var(--ac);background:var(--gh);animation:fi .4s;border-radius:0 2px 2px 0}
+.qext{font-family:var(--fd);font-weight:700;font-size:calc(.65rem * var(--as));letter-spacing:.18em;text-transform:uppercase;color:var(--ac);margin-bottom:.4rem}
+.qexb{font-size:calc(var(--qs) - .08rem);line-height:var(--ql);color:var(--txm)}
+.qexb strong{color:var(--txs)}
+
+/* BUTTONS */
+.btn{display:block;width:100%;background:transparent;border:1px solid var(--tx);color:var(--tx);font-family:var(--fm);font-size:var(--aui);letter-spacing:.3em;text-transform:uppercase;padding:.9rem;cursor:pointer;transition:all .3s;text-align:center;border-radius:2px}
+.btn:active{transform:scale(.98);background:var(--tx);color:var(--bg)}
+.bp{background:var(--tx);color:var(--bg)}
+.bp:active{background:var(--ac)}
+.bb{border-color:var(--ac2);color:var(--ac2)}
+.bb:active{background:var(--ac2);color:var(--txs)}
+.br{display:flex;gap:.5rem;padding:0 1.5rem 1.2rem}
+.br .btn{flex:1}
+
+/* RESULTS */
+.rh{padding:2rem 1.5rem;text-align:center;position:relative;overflow:hidden}
+.rhbg{position:absolute;inset:0;background:radial-gradient(ellipse 50% 50% at 50% 50%,var(--gh),transparent 70%)}
+.rsc{font-family:var(--fd);font-size:calc(4rem * var(--as));font-weight:800;color:var(--txs);line-height:1;position:relative;z-index:1}
+.rsl{font-family:var(--fm);font-size:var(--aui);letter-spacing:.35em;text-transform:uppercase;color:var(--ac);margin-top:.3rem;position:relative;z-index:1}
+.rsg{font-family:var(--ff);font-size:calc(1.2rem * var(--as));font-style:italic;color:var(--ac);margin-top:.3rem;position:relative;z-index:1}
+.rss{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;padding:0 1.5rem;margin:1.2rem 0}
+.rst{padding:.7rem;border:1px solid var(--bd);text-align:center;border-radius:2px}
+.rst .v{font-family:var(--fd);font-weight:700;font-size:calc(1.2rem * var(--as));color:var(--txs)}
+.rst .l{font-family:var(--fm);font-size:calc(.4rem * var(--as));letter-spacing:.15em;text-transform:uppercase;color:var(--txm);margin-top:.15rem}
+.rxp{margin:.8rem 1.5rem;padding:.8rem;border:1px solid rgba(196,168,130,.12);text-align:center;background:var(--gh);border-radius:2px}
+.rxpv{font-family:var(--fd);font-weight:800;font-size:calc(1.5rem * var(--as));color:var(--ac)}
+.rxpl{font-family:var(--fm);font-size:calc(var(--aui) - .02rem);letter-spacing:.2em;text-transform:uppercase;color:var(--txm)}
+.bd{padding:0 1.5rem 1.2rem}
+.bdi{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--bd)}
+.bdn{font-family:var(--fd);font-weight:600;font-size:calc(.78rem * var(--as));color:var(--txs)}
+.bds{font-family:var(--fm);font-size:var(--aui);color:var(--ac)}
+.bdb{width:50px;height:3px;background:var(--bd);border-radius:2px;overflow:hidden}
+.bdbf{height:100%;border-radius:2px;transition:width .6s}
+
+.ri{padding:.9rem 1.5rem;border-bottom:1px solid var(--bd);cursor:pointer;transition:background .3s}
+.ri:active{background:var(--gh)}
+.rit{display:flex;justify-content:space-between;align-items:center;margin-bottom:.2rem}
+.rin{font-family:var(--fm);font-size:var(--aui);letter-spacing:.12em;color:var(--txm)}
+.rir{font-family:var(--fm);font-size:var(--aui);letter-spacing:.1em;text-transform:uppercase}
+.rir.ct{color:var(--ok)}.rir.wt{color:var(--no)}
+.ris{font-size:calc(var(--qs) - .1rem);color:var(--txm);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+.apop{position:fixed;top:.7rem;left:50%;transform:translateX(-50%);z-index:9998;background:var(--card);border:1px solid var(--ac);padding:.6rem 1rem;display:flex;align-items:center;gap:.6rem;animation:ai .5s ease,ao .5s ease 2.5s forwards;pointer-events:none;border-radius:2px}
+@keyframes ai{from{opacity:0;transform:translateX(-50%) translateY(-20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes ao{to{opacity:0;transform:translateX(-50%) translateY(-20px)}}
+.apop .ai{font-size:calc(1.1rem * var(--as))}.apop .at{font-family:var(--fd);font-weight:600;font-size:calc(.68rem * var(--as));color:var(--txs)}.apop .ad2{font-family:var(--fm);font-size:calc(.4rem * var(--as));color:var(--ac);letter-spacing:.1em}
+
+.bk{background:none;border:none;color:var(--txm);font-family:var(--fm);font-size:var(--aui);letter-spacing:.15em;text-transform:uppercase;cursor:pointer;padding:.3rem 0;display:flex;align-items:center;gap:.4rem;transition:color .3s}
+.bk:active{color:var(--ac)}
+.bk::before{content:'←'}
+
+/* RANGE SLIDER */
+.slider-wrap{margin-top:.5rem}
+.slider-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+.slider-val{font-family:var(--fd);font-weight:700;font-size:calc(1rem * var(--as));color:var(--txs);min-width:3rem;text-align:center;padding:.2rem .6rem;border:1px solid var(--bd);border-radius:2px;background:var(--card)}
+.slider-labels{display:flex;justify-content:space-between;margin-top:.3rem}
+.slider-labels span{font-family:var(--fm);font-size:calc(var(--aui) - .06rem);color:var(--txm);letter-spacing:.1em}
+input[type="range"]{-webkit-appearance:none;appearance:none;width:100%;height:6px;background:var(--bd);border-radius:3px;outline:none;transition:background .3s}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:var(--ac);cursor:pointer;border:2px solid var(--bg);box-shadow:0 2px 8px rgba(0,0,0,.3);transition:transform .2s}
+input[type="range"]::-webkit-slider-thumb:active{transform:scale(1.2)}
+input[type="range"]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--ac);cursor:pointer;border:2px solid var(--bg);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.tile-preview{margin-top:.6rem;padding:.6rem;border:1px solid var(--bd);border-radius:2px;background:var(--card);overflow:hidden}
+.tile-preview .mg{padding:0}
+
+@media(min-width:768px){.tgr,.igr{grid-template-columns:repeat(3,1fr)}.cgr{grid-template-columns:repeat(12,1fr)}}
+@media(min-width:1024px){body{display:flex;justify-content:center}.screen{max-width:600px;width:100%;border-left:1px solid var(--bd);border-right:1px solid var(--bd)}}
+</style>
+</head>
+<body data-theme="blackbone" data-color="bone" data-font="garamond" data-appsize="m" data-qsize="m" data-tiles="2">
+<div class="loader" id="loader"><div class="loader-bone"></div><div class="loader-text">Preparing Examination</div></div>
+<!-- LOGIN -->
+<div class="screen active" id="loginScreen"><div class="aw"><div class="abg"></div><div class="ac">
+<div class="abr"><h1>BLACK <span class="ol">BONE</span></h1><p>Medical Exam Prep</p></div>
+<div class="af">
+<div><label>Email</label><input type="email" id="liE" placeholder="your@email.com"></div>
+<div><label>Password</label><input type="password" id="liP" placeholder="Enter password"></div>
+<div class="aerr" id="liErr"></div>
+<button class="btn bp" onclick="doLogin()">Enter the Lab</button>
+</div>
+<div class="adiv"><span>or</span></div>
+<div class="asw">No account? <a onclick="S('signupScreen')">Sign up</a></div>
+<div class="ask"><a onclick="skipAuth()">Skip for now →</a></div>
+</div></div></div>
+
+<!-- SIGNUP -->
+<div class="screen" id="signupScreen"><div class="aw"><div class="abg"></div><div class="ac">
+<div class="abr"><h1>JOIN THE<br><span class="ol">RANKS</span></h1><p>Create Your Account</p></div>
+<div class="af">
+<div><label>Full Name</label><input type="text" id="suN" placeholder="Dr. House"></div>
+<div><label>Email</label><input type="email" id="suE" placeholder="your@email.com"></div>
+<div><label>Password</label><input type="password" id="suP" placeholder="Min 4 characters"></div>
+<div><label>Confirm Password</label><input type="password" id="suP2" placeholder="Confirm password"></div>
+<div><label>Choose Your Avatar</label><div class="dp-grid" id="dpGrid"></div></div>
+<div><label>Exam Prep Track</label>
+<select id="suTrack">
+<option value="usmle">USMLE Step 1 — Medicine</option>
+<option value="nbde">NBDE Part 1 — Dentistry</option>
+<option value="nbeo">NBEO Part 1 — Optometry</option>
+</select></div>
+<div class="aerr" id="suErr"></div>
+<button class="btn bp" onclick="doSignup()">Begin The Dissection</button>
+</div>
+<div class="adiv"><span>or</span></div>
+<div class="asw">Have an account? <a onclick="S('loginScreen')">Log in</a></div>
+</div></div></div>
+
+<!-- HOME -->
+<div class="screen" id="homeScreen">
+<div class="tb"><div class="tbn">Black Bone<small id="trackLabel">USMLE Step 1</small></div>
+<div class="tbr"><div class="tbs"><div class="v" id="lvl">1</div><div class="l">Level</div></div>
+<div class="tbs"><div class="v" id="xpd">0</div><div class="l">XP</div><div class="xb"><div class="xbf" id="xbb" style="width:0%"></div></div></div>
+<button class="sbtn" onclick="S('settingsScreen')">⚙</button></div></div>
+<div class="hh"><div class="hhbg"></div>
+<div class="hpre" id="homePre">Medical Board Prep</div>
+<h1 class="ht" id="homeTitle">STEP <span class="ol">ONE</span></h1>
+<p class="hsub" id="homeSub">Where knowledge meets discipline</p>
+<div class="ug" id="ug"></div></div>
+<div class="sb"><div class="sf">🔥</div><div class="si"><div class="sc" id="stk">0 Day Streak</div><div class="sl">Keep the flame alive</div></div></div>
+<div class="ms"><div class="ml">Mode Select</div><div class="mg">
+<div class="mc" onclick="quickPractice()"><div class="mci" id="ic0"></div><div class="mct">Quick Fire</div><div class="mcd">10 Random Qs</div></div>
+<div class="mc" onclick="showSubj('practice')"><div class="mci" id="ic1"></div><div class="mct">Practice</div><div class="mcd">By Subject</div></div>
+<div class="mc bl" onclick="startExam()"><div class="mci" id="ic2"></div><div class="mct">Exam Mode</div><div class="mcd">40 Q · Timed</div></div>
+<div class="mc" onclick="showSubj('all')"><div class="mci" id="ic3"></div><div class="mct">All Questions</div><div class="mcd" id="allQCount">Full Bank</div></div>
+</div></div>
+<div class="ms" style="padding-top:0"><div class="ml">Performance</div><div class="mg">
+<div class="mc full" onclick="showStats()"><div class="mci" id="ic4"></div><div class="mct">Your Stats</div><div class="mcd">Track Progress & Weak Areas</div></div>
+</div></div>
+<div class="ms" style="padding-top:0"><div class="ml">Switch Track</div><div class="mg">
+<div class="mc" onclick="switchTrack('usmle')"><div class="mci">🩺</div><div class="mct">USMLE Step 1</div><div class="mcd">Medicine</div></div>
+<div class="mc" onclick="switchTrack('nbde')"><div class="mci">🦷</div><div class="mct">NBDE Part 1</div><div class="mcd">Dentistry</div></div>
+<div class="mc" onclick="switchTrack('nbeo')"><div class="mci">👁</div><div class="mct">NBEO Part 1</div><div class="mcd">Optometry</div></div>
+</div></div></div>
+
+<!-- SETTINGS -->
+<div class="screen" id="settingsScreen">
+<div class="tb"><button class="bk" onclick="goHome()">Back</button><div class="tbn" style="font-size:calc(.55rem * var(--as))">Settings</div></div>
+<div id="pcArea"></div>
+<div class="ss"><div class="sst">🎨 Theme</div><div class="tgr" id="thG"></div></div>
+<div class="ss"><div class="sst">🌈 Accent Color</div><div class="cgr" id="clG"></div></div>
+<div class="ss"><div class="sst">😀 Icon Style</div><div class="igr" id="icG"></div></div>
+<div class="ss"><div class="sst">🖼 Profile Picture</div><div class="dp-grid" id="dpSet"></div></div>
+<div class="ss"><div class="sst">🔤 Font Family</div><div class="fl" id="fnL"></div></div>
+<div class="ss"><div class="sst">🧩 Tile Layout</div>
+<div class="slider-wrap">
+<div class="slider-header">
+<span style="font-family:var(--fm);font-size:var(--aui);color:var(--txm);letter-spacing:.15em;text-transform:uppercase">Grid Columns</span>
+<div class="slider-val" id="tileVal">2×2</div>
+</div>
+<input type="range" min="1" max="6" step="1" id="tileSlider" oninput="onTileSlide(this.value)">
+<div class="slider-labels"><span>1 col</span><span>3</span><span>6 col</span></div>
+</div>
+<div class="tile-preview" id="tilePrev"></div>
+</div>
+<div class="ss"><div class="sst">📐 App Text Size</div><div class="sr" id="asR"></div></div>
+<div class="ss"><div class="sst">📖 Question Text Size</div><div class="sr" id="qsR"></div></div>
+<div class="ss"><div class="sst">👀 Reading Preview</div>
+<div class="pvw"><div class="pv">A 45-year-old woman presents with <strong>fatigue, weight gain, and cold intolerance</strong>. Her thyroid is diffusely enlarged.</div>
+<div class="pstem">What is the most likely diagnosis?</div></div></div>
+<div class="br" style="margin-top:1rem"><button class="btn bb" onclick="doLogout()">Log Out</button></div>
+</div>
+
+<!-- SUBJECT SELECT -->
+<div class="screen" id="subjectScreen">
+<div class="tb"><button class="bk" onclick="goHome()">Back</button><div class="tbn" style="font-size:calc(.55rem * var(--as))">Select Subject</div></div>
+<div class="sjl" id="sjL"></div></div>
+
+<!-- QUESTION -->
+<div class="screen" id="questionScreen">
+<div class="qh"><div class="qctr" id="qC"></div><div class="qtm" id="qT"></div></div>
+<div class="qpg"><div class="qpgf" id="qP" style="width:0%"></div></div>
+<div class="qst" id="qS"></div><div class="qv" id="qV"></div><div class="qstem" id="qSt"></div>
+<div class="qos" id="qO"></div><div id="qEx"></div><div id="qN"></div></div>
+
+<!-- RESULTS -->
+<div class="screen" id="resultsScreen">
+<div class="tb"><button class="bk" onclick="goHome()">Home</button><div class="tbn" style="font-size:calc(.55rem * var(--as))">Results</div></div>
+<div class="rh"><div class="rhbg"></div><div class="rsc" id="rSc">0%</div><div class="rsl" id="rLb">Score</div><div class="rsg" id="rGr"></div></div>
+<div class="rss" id="rSt"></div><div class="rxp" id="rXp"></div>
+<div class="ms"><div class="ml">Subject Breakdown</div></div>
+<div class="bd" id="rBd"></div>
+<div class="br"><button class="btn" onclick="showReview()">Review</button><button class="btn bp" onclick="goHome()">Home</button></div></div>
+
+<!-- REVIEW -->
+<div class="screen" id="reviewScreen">
+<div class="tb"><button class="bk" onclick="S('resultsScreen')">Back</button><div class="tbn" style="font-size:calc(.55rem * var(--as))">Review</div></div>
+<div id="rvL"></div><div class="br" style="margin-top:.8rem"><button class="btn" onclick="goHome()">Home</button></div></div>
+
+<!-- STATS -->
+<div class="screen" id="statsScreen">
+<div class="tb"><button class="bk" onclick="goHome()">Back</button><div class="tbn" style="font-size:calc(.55rem * var(--as))">Performance</div></div>
+<div class="rh"><div class="rhbg"></div><div class="rsc" id="stTot">0</div><div class="rsl">Questions Answered</div></div>
+<div class="rss" id="stG"></div><div class="ms"><div class="ml">Subject Mastery</div></div><div class="bd" id="stBd"></div>
+<div class="br"><button class="btn bb" onclick="if(confirm('Reset progress?')){localStorage.removeItem('bb_p');location.reload()}">Reset</button><button class="btn" onclick="goHome()">Home</button></div></div>
+<script>
+// ═══ CONFIG ═══
+const THEMES=[
+{id:'blackbone',n:'Black Bone',s:'Original dark',d:'linear-gradient(135deg,#050505,#c4a882)'},
+{id:'surgical',n:'Surgical Steel',s:'Cold chrome',d:'linear-gradient(135deg,#0b1120,#4a90d9)'},
+{id:'cadaver',n:'Cadaver Lab',s:'Formaldehyde',d:'linear-gradient(135deg,#0a110a,#5a9e5a)'},
+{id:'crimson',n:'Crimson Marrow',s:'Blood & bone',d:'linear-gradient(135deg,#110505,#c0574a)'},
+{id:'whitecoat',n:'White Coat',s:'Clinical light',d:'linear-gradient(135deg,#f4f2ee,#2a6b4a)'}
+];
+const COLORS=[
+{id:'bone',hex:'#c4a882'},{id:'gold',hex:'#d4a843'},{id:'coral',hex:'#e07060'},
+{id:'teal',hex:'#2ec4b6'},{id:'violet',hex:'#9b72cf'},{id:'sky',hex:'#4a9fd9'},
+{id:'mint',hex:'#4ecdc4'},{id:'rose',hex:'#d47b8a'},{id:'amber',hex:'#e8a040'},
+{id:'lime',hex:'#84cc16'},{id:'ice',hex:'#7dd3fc'},{id:'peach',hex:'#fb923c'}
+];
+const ICONS=[
+{id:'mono',n:'Monochrome',s:'▪ ▫ ◆ ◇',icons:['◆','📄','☠','◇','▪']},
+{id:'classic',n:'Classic',s:'⚡ 📖 💀 🦴 📊',icons:['⚡','📖','💀','🦴','📊']},
+{id:'neon',n:'Neon Pulse',s:'⚡ 🧪 🔥 🧬 📈',icons:['⚡','🧪','🔥','🧬','📈']},
+{id:'minimal',n:'Minimal Dot',s:'● ○ ◉ ◎ ◐',icons:['●','○','◉','◎','◐']}
+];
+const AVATARS=['🧑‍⚕️','👨‍⚕️','👩‍⚕️','🧑‍🔬','👨‍🔬','👩‍🔬','🦷','👁','💀','🧠','🫀','🦴','🩺','🔬','🧬','🩻','💊','🧫','🏥','🐍'];
+const FONTS=[
+{id:'garamond',n:'Cormorant Garamond',f:"'Cormorant Garamond',serif",s:'Elegant serif'},
+{id:'plex',n:'IBM Plex Sans',f:"'IBM Plex Sans',sans-serif",s:'Clean modern'},
+{id:'lora',n:'Lora',f:"'Lora',serif",s:'Warm readable'},
+{id:'nunito',n:'Nunito Sans',f:"'Nunito Sans',sans-serif",s:'Soft rounded'},
+{id:'source',n:'Source Serif 4',f:"'Source Serif 4',serif",s:'Academic clarity'}
+];
+const SIZES=['xs','s','m','l','xl','2xl','3xl','4xl','5xl'];
+const SIZE_LABELS=['XS','S','M','L','XL','2XL','3XL','4XL','5XL'];
+const TRACK_INFO={
+  usmle:{label:'USMLE Step 1',pre:'Medical Board Prep',title:'STEP <span class="ol">ONE</span>',sub:'Where knowledge meets discipline'},
+  nbde:{label:'NBDE Part 1',pre:'Dental Board Prep',title:'DENTAL <span class="ol">BOARD</span>',sub:'Structure beneath the surface'},
+  nbeo:{label:'NBEO Part 1',pre:'Optometry Board Prep',title:'OPTIC <span class="ol">NERVE</span>',sub:'See what others cannot'}
+};
+// ═══ USMLE QUESTIONS (105) ═══
+const Q_USMLE=[
+{id:1,subject:"Anatomy",vignette:"A 45-year-old man undergoes thyroidectomy. Postoperatively he develops hoarseness. The nerve in the tracheoesophageal groove was damaged.",stem:"Which nerve was most likely injured?",options:["External branch of superior laryngeal nerve","Recurrent laryngeal nerve","Glossopharyngeal nerve","Hypoglossal nerve","Phrenic nerve"],answer:1,explanation:"The <strong>recurrent laryngeal nerve</strong> runs in the tracheoesophageal groove and innervates all intrinsic laryngeal muscles except cricothyroid."},
+{id:2,subject:"Anatomy",vignette:"A 62-year-old woman has difficulty swallowing. Barium swallow reveals a posterior pharyngeal diverticulum.",stem:"This diverticulum herniates through which landmark?",options:["Thyrohyoid membrane","Killian triangle","Cricothyroid membrane","Buccopharyngeal fascia","Palatopharyngeal arch"],answer:1,explanation:"<strong>Zenker diverticulum</strong> herniates through <strong>Killian triangle</strong> between the thyropharyngeus and cricopharyngeus."},
+{id:3,subject:"Anatomy",vignette:"A man is stabbed in the posterior triangle of the neck. He cannot shrug his shoulder or turn his head to the opposite side.",stem:"Which nerve was damaged?",options:["Long thoracic","Dorsal scapular","Spinal accessory","Suprascapular","Thoracodorsal"],answer:2,explanation:"<strong>CN XI (spinal accessory)</strong> traverses the posterior triangle superficially, innervating SCM and trapezius."},
+{id:4,subject:"Anatomy",vignette:"A man has ptosis, miosis, and anhidrosis. CT shows a lung apex mass.",stem:"Which structure is compressed?",options:["Phrenic nerve","Vagus nerve","Sympathetic chain/stellate ganglion","Recurrent laryngeal nerve","Brachial plexus"],answer:2,explanation:"<strong>Horner syndrome</strong> from Pancoast tumor compressing the <strong>stellate ganglion</strong>."},
+{id:5,subject:"Anatomy",vignette:"After mastectomy with axillary dissection, a woman has winged scapula.",stem:"Which nerve was injured?",options:["Thoracodorsal","Long thoracic","Subscapular","Axillary","Suprascapular"],answer:1,explanation:"<strong>Long thoracic nerve</strong> (C5-C7) innervates serratus anterior. Injury causes winged scapula."},
+{id:6,subject:"Anatomy",vignette:"Midshaft humerus fracture causes wrist drop and dorsal hand sensory loss.",stem:"Which nerve is injured?",options:["Median","Ulnar","Radial","Musculocutaneous","Axillary"],answer:2,explanation:"<strong>Radial nerve</strong> in the spiral groove. Wrist drop = loss of wrist/finger extension."},
+{id:7,subject:"Anatomy",vignette:"Knee injury with ACL tear. Tibia pulled anteriorly relative to femur.",stem:"Which test is described?",options:["McMurray","Posterior drawer","Anterior drawer","Lachman","Valgus stress"],answer:2,explanation:"<strong>Anterior drawer test</strong> assesses ACL integrity at 90° flexion."},
+{id:8,subject:"Anatomy",vignette:"Left-sided congenital diaphragmatic hernia in a newborn.",stem:"Through which structure did herniation occur?",options:["Septum transversum","Pleuroperitoneal membrane","Dorsal mesentery","Esophageal hiatus","Body wall"],answer:1,explanation:"<strong>Bochdalek hernia</strong>: defect in the pleuroperitoneal membrane, usually left side."},
+{id:9,subject:"Anatomy",vignette:"During cholecystectomy, the cystic artery is found in a triangle bounded by cystic duct, common hepatic duct, and liver.",stem:"What is this triangle?",options:["Hesselbach","Calot","Posterior","Suboccipital","Femoral"],answer:1,explanation:"<strong>Triangle of Calot</strong>: cystic duct + common hepatic duct + inferior liver edge."},
+{id:10,subject:"Anatomy",vignette:"A man with atrial fibrillation has acute abdominal pain out of proportion to exam findings.",stem:"Which artery is most commonly occluded by embolus?",options:["Celiac trunk","SMA","IMA","Internal iliac","Splenic"],answer:1,explanation:"<strong>SMA</strong>: acute takeoff angle from aorta makes it a conduit for emboli."},
+{id:11,subject:"Anatomy",vignette:"After cervical spine surgery, uvula deviates to the right with nasal regurgitation.",stem:"Which nerve was injured?",options:["Right vagus","Left vagus","Right glossopharyngeal","Left glossopharyngeal","Right hypoglossal"],answer:1,explanation:"<strong>Left vagus</strong> injury: uvula deviates away from lesion (toward intact right side)."},
+{id:12,subject:"Anatomy",vignette:"Lateral knee blow causes increased medial joint space with valgus stress.",stem:"Which structure is damaged?",options:["LCL","ACL","MCL","PCL","Medial meniscus"],answer:2,explanation:"Valgus force stretches <strong>MCL</strong>. 'Unhappy triad': MCL + ACL + medial meniscus."},
+{id:13,subject:"Anatomy",vignette:"A chronic alcoholic develops esophageal varices as portosystemic anastomoses.",stem:"The left gastric vein drains into?",options:["IVC","SMV","Portal vein","Splenic vein","Hepatic vein"],answer:2,explanation:"<strong>Left gastric (coronary) vein</strong> → portal vein. Backs up into esophageal veins in portal HTN."},
+{id:14,subject:"Anatomy",vignette:"A child has a painless umbilical mass attached to ileum that transilluminates.",stem:"Remnant of which structure?",options:["Allantois","Urachus","Vitelline duct","Umbilical artery","Ductus venosus"],answer:2,explanation:"<strong>Meckel diverticulum</strong> = vitelline duct remnant. Rule of 2s."},
+{id:15,subject:"Anatomy",vignette:"Lumbar puncture at L4-L5. After ligamentum flavum:",stem:"What order do remaining structures go?",options:["Dura→arachnoid→subarachnoid","Epidural→dura→arachnoid→subarachnoid","Arachnoid→dura→subarachnoid","Epidural→arachnoid→dura→subarachnoid","Dura→subarachnoid→arachnoid"],answer:1,explanation:"Ligamentum flavum → <strong>epidural space → dura → arachnoid → subarachnoid space</strong>."},
+{id:16,subject:"Physiology",vignette:"CHF patient: Na⁺ 128, low serum osmolality, concentrated urine.",stem:"What explains the hyponatremia?",options:["Decreased aldosterone","Increased ANP","SIADH","Primary polydipsia","Renal salt wasting"],answer:2,explanation:"Low Na⁺ + low serum osm + concentrated urine = <strong>SIADH</strong>. Excess ADH → water retention."},
+{id:17,subject:"Physiology",vignette:"Preeclamptic woman at 32 weeks: BP 170/110, 3+ proteinuria.",stem:"What causes the proteinuria?",options:["Increased GFR","Glomerular endotheliosis","Decreased RBF","Tubular necrosis","Decreased aldosterone"],answer:1,explanation:"<strong>Glomerular endotheliosis</strong>: endothelial swelling disrupts the glomerular filtration barrier."},
+{id:18,subject:"Physiology",vignette:"CKD (GFR 20): Ca²⁺ 7.2, PO₄ 7.5, elevated PTH.",stem:"Primary mechanism of hypocalcemia?",options:["Diet","Decreased 1,25-(OH)₂D production","Calcitonin","PTH resistance","Urinary Ca loss"],answer:1,explanation:"Failing kidneys can't make <strong>calcitriol</strong> via 1α-hydroxylase → decreased intestinal Ca absorption."},
+{id:19,subject:"Physiology",vignette:"VO₂=250, CaO₂=20, CvO₂=15 mL/dL.",stem:"Cardiac output?",options:["2.5 L/min","5.0 L/min","7.5 L/min","10.0 L/min","12.5 L/min"],answer:1,explanation:"<strong>CO=VO₂/(CaO₂-CvO₂)</strong>=250/5=50 dL/min=<strong>5.0 L/min</strong>."},
+{id:20,subject:"Physiology",vignette:"Hyperventilation: pH 7.55, PaCO₂ 22.",stem:"O₂-Hb dissociation curve change?",options:["Right shift","Left shift","No change","Increased P50","Decreased O₂ capacity"],answer:1,explanation:"Alkalosis → <strong>left shift</strong>: Hb binds O₂ tighter, less delivery to tissues."},
+{id:21,subject:"Physiology",vignette:"Pheochromocytoma: BP 210/130, elevated catecholamines.",stem:"Which receptor causes vasoconstriction?",options:["α₁","α₂","β₁","β₂","M₃"],answer:0,explanation:"<strong>α₁</strong> on vascular smooth muscle → Gq→PLC→IP₃→Ca²⁺→contraction."},
+{id:22,subject:"Physiology",vignette:"ICU: CO=8, MAP=70, CVP=2.",stem:"SVR?",options:["4.5","6.0","8.5","10.0","12.0"],answer:2,explanation:"<strong>SVR=(MAP-CVP)/CO</strong>=(70-2)/8=<strong>8.5</strong>."},
+{id:23,subject:"Physiology",vignette:"Phase 2 of cardiac action potential: stable at ~0 mV.",stem:"Which ion currents?",options:["Na⁺ in, K⁺ out","Ca²⁺ in, K⁺ out","K⁺ in, Cl⁻ out","Na⁺ in, Ca²⁺ out","Ca²⁺ in, Na⁺ out"],answer:1,explanation:"Plateau: inward <strong>Ca²⁺ (L-type)</strong> balanced by outward <strong>K⁺</strong>."},
+{id:24,subject:"Physiology",vignette:"Marathon runner: dark urine, elevated ADH.",stem:"ADH acts on which segment?",options:["PCT","Thin descending loop","Thick ascending loop","DCT","Collecting duct"],answer:4,explanation:"<strong>ADH</strong> → V₂ receptors → <strong>collecting duct</strong> → aquaporin-2 insertion."},
+{id:25,subject:"Physiology",vignette:"pH 7.32, PaCO₂ 60, HCO₃⁻ 30.",stem:"Acid-base disturbance?",options:["Acute respiratory acidosis","Chronic respiratory acidosis with compensation","Metabolic acidosis with compensation","Mixed acidosis","Acute respiratory alkalosis"],answer:1,explanation:"Elevated PaCO₂ + appropriately elevated HCO₃⁻ = <strong>chronic compensation</strong>."},
+{id:26,subject:"Physiology",vignette:"Thiazide patient: Na⁺ 130, K⁺ 2.8, weakness.",stem:"Mechanism of hypokalemia?",options:["Direct K⁺ secretion in PCT","Increased Na⁺ delivery to CD promoting K⁺ secretion","Inhibit K⁺ reabsorption in loop","H⁺/K⁺-ATPase activation","Decreased gut K⁺"],answer:1,explanation:"More Na⁺ at <strong>collecting duct</strong> → ENaC reabsorbs it → negative lumen → K⁺ secretion via ROMK."},
+{id:27,subject:"Physiology",vignette:"Diarrhea: Na⁺ 140, Cl⁻ 115, HCO₃⁻ 10, pH 7.25.",stem:"Anion gap and type?",options:["AG=15, anion gap","AG=15, non-anion gap","AG=12, non-anion gap","AG=20, anion gap","AG=8, non-anion gap"],answer:1,explanation:"AG=140-(115+10)=15. Hyperchloremic = <strong>non-anion gap</strong> from HCO₃⁻ loss."},
+{id:28,subject:"Physiology",vignette:"Heart failure with elevated LVEDP and pulmonary edema.",stem:"Primary force driving fluid into interstitium?",options:["Capillary oncotic pressure","Decreased interstitial pressure","Increased pulmonary capillary hydrostatic pressure","Decreased permeability","Increased interstitial oncotic"],answer:2,explanation:"LHF → elevated <strong>pulmonary capillary hydrostatic pressure</strong> → transudative edema."},
+{id:29,subject:"Physiology",vignette:"Substance X clearance = 625 mL/min. GFR=125, RPF=625.",stem:"What is substance X?",options:["Inulin","Glucose","PAH","Creatinine","Urea"],answer:2,explanation:"<strong>PAH</strong> clearance ≈ RPF (filtered + secreted). Inulin = GFR. Glucose ≈ 0."},
+{id:30,subject:"Physiology",vignette:"Spirometry: effort-independent portion during forced expiration.",stem:"What determines max flow?",options:["Diaphragm","Airway resistance + elastic recoil","Intercostals","Abdominal muscles","Chest wall compliance"],answer:1,explanation:"Effort-independent flow: <strong>airway resistance and lung elastic recoil</strong>."},
+{id:31,subject:"Biochemistry",vignette:"Neonate with lethargy, seizures, markedly elevated ammonia.",stem:"First enzyme of urea cycle?",options:["OTC","CPS I","Arginase","Argininosuccinate synthetase","NAG synthase"],answer:1,explanation:"<strong>CPS I</strong>: NH₃+CO₂+2ATP→carbamoyl phosphate. Rate-limiting, mitochondrial."},
+{id:32,subject:"Biochemistry",vignette:"Infant with hepatomegaly and fasting hypoglycemia. Normal glycogen structure.",stem:"Deficient enzyme?",options:["Glycogen phosphorylase","Glucose-6-phosphatase","Branching enzyme","Debranching enzyme","Glycogen synthase"],answer:1,explanation:"<strong>Von Gierke (GSD I)</strong>: G6Pase deficiency → fasting hypoglycemia, hepatomegaly."},
+{id:33,subject:"Biochemistry",vignette:"Recurrent kidney stones with hexagonal crystals. Positive cyanide-nitroprusside test.",stem:"Defective amino acid transport?",options:["Phenylalanine","Tryptophan","Cystine","Glycine","Proline"],answer:2,explanation:"<strong>Cystinuria</strong>: defective cystine + COLA transport. Hexagonal crystals."},
+{id:34,subject:"Biochemistry",vignette:"Enzyme requires TPP, lipoic acid, CoA, FAD, NAD⁺.",stem:"Which enzyme?",options:["Pyruvate carboxylase","Pyruvate dehydrogenase","Isocitrate dehydrogenase","Succinate dehydrogenase","Malate dehydrogenase"],answer:1,explanation:"<strong>PDH</strong>: 'Tender Loving Care For Nancy' — all 5 cofactors."},
+{id:35,subject:"Biochemistry",vignette:"Boy with intellectual disability, self-mutilation, hyperuricemia.",stem:"Deficient enzyme?",options:["ADA","Xanthine oxidase","HGPRT","PNP","PRPP synthetase"],answer:2,explanation:"<strong>Lesch-Nyhan</strong>: X-linked HGPRT deficiency → purine salvage pathway failure."},
+{id:36,subject:"Biochemistry",vignette:"Child with corneal clouding, hepatosplenomegaly, dysostosis multiplex. Deficient α-L-iduronidase.",stem:"Condition?",options:["Hunter","Hurler","Tay-Sachs","Gaucher","Fabry"],answer:1,explanation:"<strong>Hurler (MPS I)</strong>. 'Hunters see clearly' — Hunter lacks corneal clouding."},
+{id:37,subject:"Biochemistry",vignette:"Prolonged PT/PTT corrected by vitamin K. Biliary obstruction.",stem:"Vitamin K-dependent factors?",options:["I,V,VIII,XIII","II,VII,IX,X,Protein C/S","V,VIII,XI,XII","VIII,IX,XI,XII","I,II,V,X"],answer:1,explanation:"<strong>II, VII, IX, X + Protein C & S</strong>. Mnemonic: '1972'."},
+{id:38,subject:"Biochemistry",vignette:"Methotrexate causes pancytopenia and mucositis.",stem:"Which enzyme is inhibited?",options:["Thymidylate synthase","DHFR","Ribonucleotide reductase","IMP dehydrogenase","Dihydroorotate dehydrogenase"],answer:1,explanation:"<strong>MTX inhibits DHFR</strong> → prevents THF regeneration. Leucovorin rescues."},
+{id:39,subject:"Biochemistry",vignette:"Elevated phenylalanine on newborn screening.",stem:"Deficient enzyme in classic PKU?",options:["Tyrosine hydroxylase","Homogentisic acid oxidase","Phenylalanine hydroxylase","Cystathionine synthase","BCKD"],answer:2,explanation:"Classic <strong>PKU</strong>: phenylalanine hydroxylase deficiency."},
+{id:40,subject:"Biochemistry",vignette:"Alcoholic with neuropathy, confusion, ataxia. Decreased transketolase.",stem:"Vitamin deficiency?",options:["B₂","B₃","B₁ (thiamine)","B₆","B₁₂"],answer:2,explanation:"<strong>Thiamine (B₁)</strong>: cofactor for PDH, α-KGDH, transketolase. Give B₁ BEFORE glucose."},
+{id:41,subject:"Biochemistry",vignette:"Mediterranean man: hemolytic anemia after primaquine. Bite cells + Heinz bodies.",stem:"Deficient enzyme?",options:["Pyruvate kinase","G6PD","Hexokinase","Aldolase B","PFK"],answer:1,explanation:"<strong>G6PD deficiency</strong>: X-linked. Impaired NADPH/glutathione → oxidative hemolysis."},
+{id:42,subject:"Biochemistry",vignette:"Child with SCID, low T and B cells. Toxic deoxyadenosine accumulation.",stem:"Deficient enzyme?",options:["HGPRT","PNP","ADA","Xanthine oxidase","Thymidine kinase"],answer:2,explanation:"<strong>ADA deficiency</strong> → dATP toxic to lymphocytes → AR SCID."},
+{id:43,subject:"Biochemistry",vignette:"Achilles xanthomas, LDL 350, premature MI at 35.",stem:"Dysfunctional receptor?",options:["Scavenger","SR-B1","LDL receptor","VLDL receptor","LPL"],answer:2,explanation:"<strong>Familial hypercholesterolemia</strong>: defective LDL receptors."},
+{id:44,subject:"Biochemistry",vignette:"Post-translational collagen modification requiring vitamin C before triple helix.",stem:"Which step?",options:["Glycosylation","Hydroxylation of Pro/Lys","Signal peptide cleavage","Lysyl oxidase crosslinks","Triple helix formation"],answer:1,explanation:"<strong>Vitamin C</strong>: cofactor for prolyl/lysyl hydroxylase. Scurvy = defective collagen."},
+{id:45,subject:"Biochemistry",vignette:"Infant with regression, cherry-red spot. Deficient hexosaminidase A.",stem:"What accumulates?",options:["Glucocerebroside","Sphingomyelin","GM2 ganglioside","Galactocerebroside","Ceramide trihexoside"],answer:2,explanation:"<strong>Tay-Sachs</strong>: GM2 ganglioside accumulation. No hepatosplenomegaly."},
+{id:46,subject:"Microbiology",vignette:"College student: fever, pharyngitis, posterior LAD, splenomegaly. Monospot+.",stem:"Causative virus?",options:["CMV","EBV","HHV-6","Adenovirus","Coxsackievirus"],answer:1,explanation:"<strong>EBV (HHV-4)</strong>: mono. Atypical lymphocytes = reactive CD8+ T cells."},
+{id:47,subject:"Microbiology",vignette:"HIV+, CD4=50. Headache, confusion. India ink: encapsulated yeast.",stem:"Organism?",options:["Candida","Cryptococcus neoformans","Histoplasma","Aspergillus","Pneumocystis"],answer:1,explanation:"<strong>Cryptococcus</strong>: meningoencephalitis when CD4<100. Pigeon droppings."},
+{id:48,subject:"Microbiology",vignette:"Diarrhea 10 days after clindamycin. Stool toxin+.",stem:"Organism?",options:["S. aureus","C. perfringens","C. difficile","E. coli O157","B. cereus"],answer:2,explanation:"<strong>C. difficile</strong>: pseudomembranous colitis. Toxin A + Toxin B."},
+{id:49,subject:"Microbiology",vignette:"Ohio Valley: cough, fever, hilar LAD. Granulomas with oval yeast in macrophages.",stem:"Organism?",options:["Blastomyces","Coccidioides","Histoplasma","Aspergillus","Cryptococcus"],answer:2,explanation:"<strong>Histoplasma</strong>: small yeast within macrophages. Ohio/Mississippi valleys."},
+{id:50,subject:"Microbiology",vignette:"Child with honey-crusted facial lesion. GP cocci in chains.",stem:"Organism?",options:["S. aureus","S. pyogenes","S. pneumoniae","Pseudomonas","C. diphtheriae"],answer:1,explanation:"<strong>GAS</strong>: chains = Strep. Classic honey-crusted impetigo."},
+{id:51,subject:"Microbiology",vignette:"Painless genital chancre. Spirochetes on dark-field. RPR+/FTA-ABS+.",stem:"Organism?",options:["Gonorrhea","H. ducreyi","T. pallidum","Chlamydia L1-L3","K. granulomatis"],answer:2,explanation:"<strong>T. pallidum</strong>: painless chancre = primary syphilis."},
+{id:52,subject:"Microbiology",vignette:"HIV+, CD4=80. Ring-enhancing brain lesion. Tachyzoites.",stem:"Organism?",options:["Cryptococcus","Toxoplasma gondii","JC virus","TB","CNS lymphoma"],answer:1,explanation:"<strong>Toxoplasma</strong>: ring-enhancing lesions in AIDS. Treat with pyrimethamine+sulfadiazine."},
+{id:53,subject:"Microbiology",vignette:"Child: bloody diarrhea after undercooked hamburger. Sorbitol-negative. HUS develops.",stem:"E. coli strain?",options:["ETEC","EIEC","EHEC O157:H7","EPEC","EAEC"],answer:2,explanation:"<strong>EHEC O157:H7</strong>: Shiga-like toxin → HUS. Antibiotics contraindicated."},
+{id:54,subject:"Microbiology",vignette:"Cyclical fevers from India. Ring trophozoites + crescent gametocytes.",stem:"Plasmodium species?",options:["P. vivax","P. ovale","P. falciparum","P. malariae","P. knowlesi"],answer:2,explanation:"<strong>P. falciparum</strong>: pathognomonic crescent gametocytes. Most severe."},
+{id:55,subject:"Microbiology",vignette:"Child: periorbital edema, dark urine, HTN 2 weeks after sore throat. RBC casts, low C3.",stem:"Immunologic mechanism?",options:["Type I","Type II","Type III","Type IV","Direct invasion"],answer:2,explanation:"<strong>PSGN = Type III</strong>: immune complex deposition → complement consumption."},
+{id:56,subject:"Microbiology",vignette:"Renal transplant: hemorrhagic cystitis. 'Decoy cells' on cytology.",stem:"Virus?",options:["Adenovirus","BK virus","JC virus","CMV","HSV"],answer:1,explanation:"<strong>BK virus</strong>: polyomavirus in transplant patients."},
+{id:57,subject:"Microbiology",vignette:"Prosthetic valve endocarditis. Coag-negative, novobiocin-sensitive.",stem:"Organism?",options:["S. aureus","S. epidermidis","S. saprophyticus","E. faecalis","S. bovis"],answer:1,explanation:"<strong>S. epidermidis</strong>: biofilm on prosthetics. Coag-neg, novobiocin-sensitive."},
+{id:58,subject:"Microbiology",vignette:"Wool worker: painless papule→black eschar. GP rods in 'boxcar' chains.",stem:"Organism?",options:["C. perfringens","B. anthracis","B. cereus","Listeria","C. diphtheriae"],answer:1,explanation:"<strong>B. anthracis</strong>: cutaneous anthrax. Non-hemolytic, non-motile."},
+{id:59,subject:"Microbiology",vignette:"Cultured on charcoal yeast extract + iron + cysteine. Near contaminated cooling tower.",stem:"Organism?",options:["Mycoplasma","Legionella","Chlamydophila","H. influenzae","Bordetella"],answer:1,explanation:"<strong>Legionella</strong>: requires charcoal yeast extract + iron + cysteine."},
+{id:60,subject:"Microbiology",vignette:"Child: paroxysmal cough with whoop. WBC 60,000 lymphocytes.",stem:"Which toxin causes lymphocytosis?",options:["Pertussis toxin","Adenylate cyclase toxin","Tracheal cytotoxin","Filamentous hemagglutinin","Dermonecrotic toxin"],answer:0,explanation:"<strong>Pertussis toxin</strong>: ADP-ribosylates Gᵢ → lymphocytes can't enter lymph nodes."},
+{id:61,subject:"Pathology",vignette:"Smoker with hemoptysis. Central mass: keratin pearls, intercellular bridges.",stem:"Diagnosis?",options:["Adenocarcinoma","Squamous cell CA","Small cell","Large cell","Carcinoid"],answer:1,explanation:"<strong>Squamous cell CA</strong>: central, keratin pearls. Can cause hypercalcemia (PTHrP)."},
+{id:62,subject:"Pathology",vignette:"Fatigue, weight gain, cold intolerance. Biopsy: lymphocytic infiltrate, germinal centers, Hürthle cells.",stem:"Diagnosis?",options:["Graves","Hashimoto","de Quervain","Riedel","Papillary CA"],answer:1,explanation:"<strong>Hashimoto</strong>: anti-TPO, Hürthle cells, germinal centers. Most common hypothyroidism cause."},
+{id:63,subject:"Pathology",vignette:"Young woman, mobile breast lump. Biphasic: stroma compresses epithelium into slits.",stem:"Diagnosis?",options:["Fibroadenoma","Phyllodes","Invasive ductal","Intraductal papilloma","Fat necrosis"],answer:0,explanation:"<strong>Fibroadenoma</strong>: most common breast tumor <35. Biphasic, intracanalicular pattern."},
+{id:64,subject:"Pathology",vignette:"Child: abdominal mass crossing midline. Elevated HVA/VMA. Homer-Wright rosettes.",stem:"Diagnosis?",options:["Wilms","Neuroblastoma","Pheochromocytoma","Hepatoblastoma","Rhabdomyosarcoma"],answer:1,explanation:"<strong>Neuroblastoma</strong>: neural crest, crosses midline. N-myc amplification = poor prognosis."},
+{id:65,subject:"Pathology",vignette:"Back pain, anemia, M-spike, lytic lesions, Bence Jones proteins.",stem:"Diagnosis?",options:["Waldenström","Multiple myeloma","MGUS","CLL","Amyloidosis"],answer:1,explanation:"<strong>Multiple myeloma</strong>: CRAB criteria. Rouleaux on smear."},
+{id:66,subject:"Pathology",vignette:"Episodic headache, palpitations, diaphoresis, BP 240/140. Elevated metanephrines.",stem:"Diagnosis?",options:["Conn","Pheochromocytoma","Adrenocortical CA","Neuroblastoma","Cushing"],answer:1,explanation:"<strong>Pheochromocytoma</strong>: rule of 10s. Alpha-blockade BEFORE beta."},
+{id:67,subject:"Pathology",vignette:"Painless jaundice + palpable gallbladder. Pancreatic head mass.",stem:"Clinical sign?",options:["Murphy","Charcot triad","Courvoisier","Grey Turner","Cullen"],answer:2,explanation:"<strong>Courvoisier sign</strong>: painless jaundice + distended GB → malignant obstruction."},
+{id:68,subject:"Pathology",vignette:"Butterfly rash, ANA+, anti-dsDNA+, low complement. Wire-loop renal lesions.",stem:"Diagnosis?",options:["RA","SLE","Dermatomyositis","Scleroderma","MCTD"],answer:1,explanation:"<strong>SLE</strong>: anti-dsDNA specific. Wire-loop = Class IV diffuse proliferative GN."},
+{id:69,subject:"Pathology",vignette:"Testicular mass. AFP elevated, β-hCG normal. Schiller-Duval bodies.",stem:"Diagnosis?",options:["Seminoma","Embryonal","Yolk sac tumor","Choriocarcinoma","Teratoma"],answer:2,explanation:"<strong>Yolk sac tumor</strong>: AFP, Schiller-Duval bodies. Most common testicular tumor in children."},
+{id:70,subject:"Pathology",vignette:"65yo: crescendo-decrescendo murmur at RUSB radiating to carotids. Calcified valve.",stem:"Cause at this age?",options:["Rheumatic","Bicuspid valve","Calcific/degenerative","Endocarditis","Libman-Sacks"],answer:2,explanation:"Age >60: <strong>calcific (degenerative) aortic stenosis</strong>."},
+{id:71,subject:"Pathology",vignette:"African woman: rapidly growing jaw mass. Starry sky pattern. t(8;14).",stem:"Diagnosis?",options:["Hodgkin","DLBCL","Burkitt","Follicular","Mantle cell"],answer:2,explanation:"<strong>Burkitt</strong>: c-myc→IgH translocation. Starry sky. Endemic = jaw/EBV."},
+{id:72,subject:"Pathology",vignette:"Chronic HBV with hepatic mass. AFP elevated.",stem:"Diagnosis?",options:["Hemangioma","FNH","HCC","Cholangiocarcinoma","Mets"],answer:2,explanation:"<strong>HCC</strong>: HBV (DNA integrates), HCV, alcohol, aflatoxin B1."},
+{id:73,subject:"Pathology",vignette:"Progressive dysphagia, weight loss, chronic GERD. GEJ mass: malignant glandular cells.",stem:"Diagnosis and precursor?",options:["SCC from web","Adenocarcinoma from Barrett","SCC from achalasia","Adeno from H. pylori","Leiomyosarcoma"],answer:1,explanation:"<strong>Esophageal adenoCA from Barrett</strong> (intestinal metaplasia with goblet cells)."},
+{id:74,subject:"Pathology",vignette:"Thyroid FNA: Orphan Annie nuclei, nuclear grooves, psammoma bodies.",stem:"Diagnosis?",options:["Follicular CA","Papillary thyroid CA","Medullary CA","Anaplastic","Lymphoma"],answer:1,explanation:"<strong>Papillary thyroid CA</strong> (80%): psammoma bodies, Orphan Annie nuclei."},
+{id:75,subject:"Pathology",vignette:"Refractory ulcers in unusual locations. Gastrin >1000. Pancreatic mass.",stem:"Diagnosis?",options:["Carcinoid","Zollinger-Ellison","Insulinoma","VIPoma","Glucagonoma"],answer:1,explanation:"<strong>ZE syndrome</strong>: gastrinoma. Associated with MEN 1 (3 P's)."},
+{id:76,subject:"Pharmacology",vignette:"T2DM + CKD (eGFR 35). Need CV and renal protection.",stem:"Which drug class?",options:["Sulfonylureas","DPP-4i","SGLT2i","TZDs","α-glucosidase inhibitors"],answer:2,explanation:"<strong>SGLT2 inhibitors</strong>: proven CV/renal protection independent of glucose lowering."},
+{id:77,subject:"Pharmacology",vignette:"PTU patient: sore throat, fever. WBC 1200, ANC 100.",stem:"Most serious adverse effect?",options:["Hepatotoxicity","Agranulocytosis","Aplastic anemia","Lupus-like","Hypothyroidism"],answer:1,explanation:"<strong>Agranulocytosis</strong>: most dangerous thionamide side effect."},
+{id:78,subject:"Pharmacology",vignette:"Warfarin patient: INR 8.5 after new antibiotic.",stem:"Which antibiotic?",options:["Amoxicillin","Azithromycin","TMP-SMX","Doxycycline","Cephalexin"],answer:2,explanation:"<strong>TMP-SMX</strong>: inhibits CYP2C9 + displaces warfarin from albumin."},
+{id:79,subject:"Pharmacology",vignette:"Statin + gemfibrozil → severe myalgia, dark urine, CK 15,000.",stem:"Diagnosis?",options:["Drug-induced lupus","Rhabdomyolysis","Hemolytic anemia","ATN","Polymyositis"],answer:1,explanation:"<strong>Rhabdomyolysis</strong>: gemfibrozil inhibits statin metabolism → toxicity."},
+{id:80,subject:"Pharmacology",vignette:"TB regimen → peripheral neuropathy.",stem:"Which drug and supplement?",options:["Rifampin — vit K","INH — vit B₆","Ethambutol — vit A","PZA — folate","Streptomycin — Ca"],answer:1,explanation:"<strong>INH depletes B₆</strong>. Always supplement pyridoxine 25-50 mg/day."},
+{id:81,subject:"Pharmacology",vignette:"Allopurinol + 6-mercaptopurine together.",stem:"Why dangerous?",options:["Increased 6-MP clearance","Allopurinol inhibits 6-MP metabolism","6-MP reduces allopurinol","Same transporter","Allopurinol activates 6-MP"],answer:1,explanation:"Both metabolized by <strong>xanthine oxidase</strong>. Reduce 6-MP dose by 75%."},
+{id:82,subject:"Pharmacology",vignette:"Methanol poisoning treatment besides ethanol.",stem:"Which enzyme inhibitor?",options:["Disulfiram","Fomepizole","Naloxone","Flumazenil","NAC"],answer:1,explanation:"<strong>Fomepizole</strong>: competitive inhibitor of alcohol dehydrogenase."},
+{id:83,subject:"Pharmacology",vignette:"Lithium patient with polyuria, polydipsia.",stem:"Mechanism of nephrogenic DI?",options:["Excess ADH","Blocks ADH receptors","Inhibits AQP2 insertion","Increases GFR","Tubular necrosis"],answer:2,explanation:"Lithium <strong>inhibits aquaporin-2 expression/insertion</strong> in collecting duct."},
+{id:84,subject:"Pharmacology",vignette:"Digoxin + thiazide → nausea, yellow halos, bradycardia.",stem:"Precipitating electrolyte abnormality?",options:["Hyperkalemia","Hypokalemia","Hypernatremia","Hypercalcemia","Hypomagnesemia"],answer:1,explanation:"<strong>Hypokalemia</strong>: K⁺ and digoxin compete for Na⁺/K⁺-ATPase binding."},
+{id:85,subject:"Pharmacology",vignette:"MAOI patient eats aged cheese → hypertensive crisis.",stem:"Causative substance?",options:["Histamine","Tyramine","Tryptophan","Phenylalanine","Glutamate"],answer:1,explanation:"<strong>Tyramine</strong>: indirect sympathomimetic, normally degraded by gut MAO."},
+{id:86,subject:"Pharmacology",vignette:"Succinylcholine causes hours of paralysis instead of minutes.",stem:"Cause?",options:["Malignant hyperthermia","Myasthenia gravis","Pseudocholinesterase deficiency","Hyperkalemia","Allergy"],answer:2,explanation:"<strong>Pseudocholinesterase deficiency</strong>: can't metabolize succinylcholine."},
+{id:87,subject:"Pharmacology",vignette:"Child ingests iron tablets. Vomiting, bloody diarrhea. Radiopaque pills.",stem:"Antidote?",options:["NAC","Deferoxamine","Dimercaprol","EDTA","Penicillamine"],answer:1,explanation:"<strong>Deferoxamine</strong>: chelates iron → 'vin rosé' urine."},
+{id:88,subject:"Pharmacology",vignette:"Haloperidol → fever 40°C, rigidity, AMS, CK 20,000.",stem:"Diagnosis and treatment?",options:["Serotonin syndrome—cyproheptadine","NMS—dantrolene+bromocriptine","MH—dantrolene","Anticholinergic—physostigmine","TD—valbenazine"],answer:1,explanation:"<strong>NMS</strong>: FEVER. Stop antipsychotic + dantrolene + bromocriptine."},
+{id:89,subject:"Pharmacology",vignette:"Acetaminophen OD. Level above treatment line.",stem:"Antidote mechanism?",options:["Binds APAP","Induces enzymes","Replenishes glutathione","Inhibits CYP2E1","Enhances excretion"],answer:2,explanation:"<strong>NAC replenishes glutathione</strong> to detoxify NAPQI."},
+{id:90,subject:"Pharmacology",vignette:"5-FU causes mucositis, diarrhea, myelosuppression.",stem:"Mechanism?",options:["DNA alkylation","Topo II inhibition","Thymidylate synthase inhibition","DHFR inhibition","DNA intercalation"],answer:2,explanation:"<strong>5-FU → 5-FdUMP → inhibits thymidylate synthase</strong>. Leucovorin enhances effect."},
+{id:91,subject:"Biostatistics",vignette:"1000 tested. 90 have cancer. 80 test+. 860 of 910 healthy test−.",stem:"Sensitivity?",options:["80/90=88.9%","80/130=61.5%","860/910=94.5%","860/880=97.7%","80/940=8.5%"],answer:0,explanation:"<strong>Sens=TP/(TP+FN)</strong>=80/90=88.9%. SnNOut."},
+{id:92,subject:"Biostatistics",vignette:"Treatment: 5% stroke. Placebo: 20% stroke over 5 years.",stem:"ARR and NNT?",options:["ARR=15%, NNT≈7","ARR=15%, NNT=20","ARR=75%, NNT≈1","ARR=25%, NNT=4","ARR=5%, NNT=20"],answer:0,explanation:"<strong>ARR=20%-5%=15%. NNT=1/0.15≈7</strong>."},
+{id:93,subject:"Biostatistics",vignette:"Coffee drinkers have more cancer, but also smoke more.",stem:"Smoking is?",options:["Selection bias","Recall bias","Lead-time bias","Confounding variable","Hawthorne effect"],answer:3,explanation:"<strong>Confounder</strong>: associated with both exposure AND outcome independently."},
+{id:94,subject:"Biostatistics",vignette:"Terminal patient says 'My labs were mixed up. I feel fine.'",stem:"Kübler-Ross stage?",options:["Anger","Bargaining","Denial","Depression","Acceptance"],answer:2,explanation:"<strong>Denial</strong>: DABDA."},
+{id:95,subject:"Biostatistics",vignette:"Trial: p=0.03, 95% CI: (2.5, 8.7).",stem:"Correct statement?",options:["3% chance null is true","Significant at α=0.05; CI excludes 0","Proves superiority","97% drug works","CI=probability range"],answer:1,explanation:"p<0.05 → reject H₀. CI excludes 0 → consistent."},
+{id:96,subject:"Biostatistics",vignette:"10,000 healthy people followed 20 years tracking diet and CVD.",stem:"Study design?",options:["Case-control","Cross-sectional","Prospective cohort","RCT","Ecological"],answer:2,explanation:"<strong>Prospective cohort</strong>: exposure → follow → outcome. Calculates RR."},
+{id:97,subject:"Biostatistics",vignette:"Cancer trial analyzes only survivors, who were healthier.",stem:"This is?",options:["Selection bias","Survivorship bias","Lead-time bias","Berkson bias","Attrition bias"],answer:1,explanation:"<strong>Survivorship bias</strong>: only 'survivors' analyzed."},
+{id:98,subject:"Biostatistics",vignette:"Competent 70yo wants DNR. Children disagree.",stem:"Action?",options:["Follow children","Follow patient, document DNR","Ethics committee first","Wait for capacity loss","Court order"],answer:1,explanation:"<strong>Competent patient autonomy</strong> prevails over family."},
+{id:99,subject:"Biostatistics",vignette:"Prevalence 1%. Sensitivity 99%, specificity 95%. Patient tests+.",stem:"PPV?",options:["99%","95%","50%","~17%","83%"],answer:3,explanation:"PPV=99/(99+495)≈<strong>17%</strong>. Low prevalence → many FPs."},
+{id:100,subject:"Biostatistics",vignette:"16yo JW refuses life-saving transfusion with parents' support.",stem:"Action?",options:["Respect family","Transfuse — minors can't refuse life-saving Tx","Court order","Ethics committee","Discharge AMA"],answer:1,explanation:"<strong>Life-saving treatment for minors</strong> overrides parental religious objections."},
+{id:101,subject:"Biostatistics",vignette:"Normal distribution: mean=500, SD=100.",stem:"% between 300-700?",options:["68%","95%","99.7%","34%","50%"],answer:1,explanation:"300-700 = mean±2SD → <strong>95%</strong>."},
+{id:102,subject:"Biostatistics",vignette:"Neither patients nor researchers know assignments.",stem:"Blinding type?",options:["Single","Double","Triple","Open-label","Crossover"],answer:1,explanation:"<strong>Double-blind</strong>: minimizes placebo + observer bias."},
+{id:103,subject:"Biostatistics",vignette:"Man tried to Cut down drinking, is Annoyed, feels Guilty, needs Eye-opener.",stem:"Screening tool?",options:["PHQ-9","GAD-7","CAGE","AUDIT","MAST"],answer:2,explanation:"<strong>CAGE</strong>: ≥2 positive = concerning for AUD."},
+{id:104,subject:"Biostatistics",vignette:"New mammography detects 2 years earlier but same 10-year mortality.",stem:"This is?",options:["Length-time bias","Lead-time bias","Selection bias","Measurement bias","Volunteer bias"],answer:1,explanation:"<strong>Lead-time bias</strong>: earlier detection inflates apparent survival."},
+{id:105,subject:"Biostatistics",vignette:"r=0.85 between exercise and HDL.",stem:"r² and meaning?",options:["0.72, 72% variance explained","0.85, 85%","0.42, 42%","0.72, 72% causal","0.92, 92%"],answer:0,explanation:"<strong>r²=0.72</strong>: 72% of HDL variance explained. Correlation≠causation."}
+];
+// ═══ NBDE DENTISTRY QUESTIONS (35) ═══
+const Q_NBDE=[
+{id:1,subject:"Oral Anatomy",vignette:"A patient requires an inferior alveolar nerve block. The dentist inserts the needle at the pterygomandibular raphe, medial to the ramus.",stem:"Which nerve is primarily anesthetized by this injection?",options:["Lingual nerve","Buccal nerve","Inferior alveolar nerve","Mental nerve","Mylohyoid nerve"],answer:2,explanation:"The <strong>inferior alveolar nerve block</strong> targets the IAN as it enters the mandibular foramen. The lingual nerve is also typically anesthetized due to proximity."},
+{id:2,subject:"Oral Anatomy",vignette:"During extraction of a maxillary molar, the root is inadvertently displaced superiorly.",stem:"Into which anatomical space is the root most likely displaced?",options:["Nasal cavity","Infratemporal fossa","Maxillary sinus","Buccal space","Parapharyngeal space"],answer:2,explanation:"Maxillary molar roots are often closely related to the <strong>maxillary sinus</strong> floor. Displacement can create an oroantral communication."},
+{id:3,subject:"Oral Anatomy",vignette:"A patient has numbness of the lower lip and chin after mandibular third molar extraction.",stem:"Which nerve was most likely damaged?",options:["Inferior alveolar nerve","Lingual nerve","Buccal nerve","Mylohyoid nerve","Auriculotemporal nerve"],answer:0,explanation:"The <strong>inferior alveolar nerve</strong> runs through the mandibular canal close to third molar roots. It provides sensation to the lower lip and chin via its mental branch."},
+{id:4,subject:"Oral Anatomy",vignette:"A 50-year-old man presents with loss of taste on the anterior two-thirds of the tongue and loss of salivation from the submandibular gland.",stem:"Which nerve is affected?",options:["Glossopharyngeal nerve","Hypoglossal nerve","Chorda tympani/lingual nerve","Vagus nerve","Trigeminal V3 motor"],answer:2,explanation:"The <strong>chorda tympani</strong> (branch of CN VII) carries taste from the anterior 2/3 of the tongue and parasympathetic fibers to submandibular and sublingual glands. It joins the lingual nerve."},
+{id:5,subject:"Oral Anatomy",vignette:"A child presents with a midline neck cyst that moves upward on tongue protrusion and swallowing.",stem:"What is the embryological origin?",options:["First branchial cleft","Second branchial pouch","Thyroglossal duct","Branchial cleft cyst","Cystic hygroma"],answer:2,explanation:"<strong>Thyroglossal duct cyst</strong> is a midline neck mass that moves with swallowing and tongue protrusion. It arises from remnants of the thyroglossal duct along the thyroid's descent path."},
+{id:6,subject:"Dental Materials",vignette:"A dentist is placing a composite restoration. She applies phosphoric acid to enamel for 15 seconds before bonding.",stem:"What is the primary purpose of acid etching enamel?",options:["Sterilize the surface","Create micromechanical retention","Remineralize enamel","Remove the smear layer only","Desensitize the dentin"],answer:1,explanation:"Acid etching with 37% phosphoric acid creates <strong>micromechanical retention</strong> by selectively dissolving enamel rods, creating micropores for resin infiltration. This is the basis of enamel bonding."},
+{id:7,subject:"Dental Materials",vignette:"A patient with a metal-ceramic crown reports a dark line at the gingival margin.",stem:"What causes this dark line?",options:["Caries recurrence","Metal oxide layer showing through thin porcelain","Composite discoloration","Gingival recession exposing the metal substructure","Root canal failure"],answer:3,explanation:"The dark line is caused by <strong>gingival recession exposing the metal margin/substructure</strong> of the PFM crown. This is a common aesthetic complaint, especially with base metal alloys."},
+{id:8,subject:"Dental Materials",vignette:"An amalgam restoration is placed adjacent to a gold inlay. The patient reports a metallic taste and pain.",stem:"What phenomenon is occurring?",options:["Thermal sensitivity","Galvanic corrosion","Chemical erosion","Microleakage","Allergic reaction"],answer:1,explanation:"<strong>Galvanic corrosion</strong> occurs when dissimilar metals in saliva create an electrochemical cell. The potential difference generates current flow, causing metallic taste and pain."},
+{id:9,subject:"Oral Pathology",vignette:"A 12-year-old presents with a well-defined radiolucent lesion at the apex of a non-vital mandibular premolar.",stem:"What is the most likely diagnosis?",options:["Dentigerous cyst","Periapical (radicular) cyst","Odontogenic keratocyst","Ameloblastoma","Lateral periodontal cyst"],answer:1,explanation:"<strong>Periapical (radicular) cyst</strong> is the most common odontogenic cyst, arising from epithelial rests of Malassez stimulated by pulp necrosis/infection. It presents as a well-defined radiolucency at the apex of a non-vital tooth."},
+{id:10,subject:"Oral Pathology",vignette:"A 20-year-old has a painless, multilocular 'soap bubble' radiolucency in the posterior mandible. Histology shows ameloblast-like cells in a stellate reticulum pattern.",stem:"Most likely diagnosis?",options:["Dentigerous cyst","Odontogenic keratocyst","Ameloblastoma","Central giant cell granuloma","Odontoma"],answer:2,explanation:"<strong>Ameloblastoma</strong>: most common clinically significant odontogenic tumor. Classic soap bubble/honeycomb radiolucency in posterior mandible. Histology: ameloblast-like cells palisading peripherally around stellate reticulum."},
+{id:11,subject:"Oral Pathology",vignette:"A 60-year-old man with a long history of smokeless tobacco use presents with a white, corrugated lesion in the mandibular vestibule.",stem:"What is this lesion most likely?",options:["Lichen planus","Leukoplakia","Smokeless tobacco keratosis","Squamous cell carcinoma","Candidiasis"],answer:2,explanation:"<strong>Smokeless tobacco keratosis</strong> (snuff dipper's lesion) appears as a white, corrugated/fissured mucosal change at the site of habitual tobacco placement. Most are reversible upon cessation, but dysplastic transformation can occur."},
+{id:12,subject:"Oral Pathology",vignette:"An 8-year-old has multiple supernumerary teeth, osteomas of the jaw, and intestinal polyps.",stem:"What syndrome does this child likely have?",options:["Peutz-Jeghers syndrome","Gardner syndrome","Gorlin syndrome","Treacher Collins","Cleidocranial dysplasia"],answer:1,explanation:"<strong>Gardner syndrome</strong> (FAP variant): supernumerary teeth, jaw osteomas, intestinal polyps with high malignant potential, desmoid tumors, and epidermoid cysts. Autosomal dominant (APC gene)."},
+{id:13,subject:"Oral Pathology",vignette:"A patient presents with painful, recurring oral ulcers with a yellowish base and erythematous halo, appearing on non-keratinized mucosa.",stem:"Most likely diagnosis?",options:["Herpes simplex","Aphthous ulcer (canker sore)","Pemphigus vulgaris","Erythema multiforme","Behçet disease"],answer:1,explanation:"<strong>Recurrent aphthous stomatitis</strong>: painful ulcers on non-keratinized (movable) mucosa. Yellow-gray pseudomembrane with erythematous halo. Unlike herpes, which affects keratinized mucosa (attached gingiva, hard palate)."},
+{id:14,subject:"Periodontics",vignette:"A patient has red, swollen, bleeding gingiva with 4-5mm pocket depths. Radiographs show horizontal bone loss.",stem:"What is the classification of this periodontal disease?",options:["Gingivitis","Stage I periodontitis","Stage II periodontitis","Stage III periodontitis","Necrotizing periodontal disease"],answer:2,explanation:"<strong>Stage II periodontitis</strong>: moderate destruction with probing depths up to 5mm and horizontal bone loss ≤1/3 of root length, but no tooth loss from periodontitis."},
+{id:15,subject:"Periodontics",vignette:"A young adult presents with rapidly progressing bone loss around first molars and incisors, with relatively little plaque.",stem:"What is the likely diagnosis?",options:["Chronic periodontitis","Aggressive (molar-incisor pattern) periodontitis","ANUG","Drug-induced gingival overgrowth","Desquamative gingivitis"],answer:1,explanation:"<strong>Aggressive periodontitis (molar-incisor pattern)</strong>: rapid bone loss around first molars and incisors, disproportionate to plaque levels. Associated with Aggregatibacterium actinomycetemcomitans. Strong familial aggregation."},
+{id:16,subject:"Pharmacology",vignette:"A dentist administers lidocaine with epinephrine for a dental procedure. The patient is taking a non-selective beta-blocker.",stem:"What is the risk of this drug interaction?",options:["Prolonged bleeding","Severe hypertension","Excessive sedation","Allergic reaction","Methemoglobinemia"],answer:1,explanation:"Epinephrine stimulates both α and β receptors. With non-selective β-blockade, unopposed <strong>α-stimulation causes severe hypertension</strong> (hypertensive crisis). Use minimal epi or avoid in these patients."},
+{id:17,subject:"Pharmacology",vignette:"A patient on warfarin needs a tooth extraction. INR is 2.5 (therapeutic range).",stem:"What is the recommended approach?",options:["Stop warfarin 5 days before","Continue warfarin; use local hemostatic measures","Switch to heparin bridge","Reduce warfarin dose by half","Administer vitamin K before extraction"],answer:1,explanation:"For patients with <strong>INR ≤3.5</strong>, simple dental procedures can be performed <strong>without stopping warfarin</strong>. Local hemostasis (sutures, oxidized cellulose, tranexamic acid rinse) is sufficient. Stopping warfarin risks thromboembolic events."},
+{id:18,subject:"Pharmacology",vignette:"A 7-year-old child is prescribed tetracycline for a dental infection.",stem:"What is the major concern with tetracycline in this age group?",options:["Hepatotoxicity","Permanent tooth discoloration","Nephrotoxicity","Photosensitivity","Pseudomembranous colitis"],answer:1,explanation:"Tetracyclines chelate calcium and are deposited in developing teeth and bones, causing <strong>permanent yellow-brown tooth discoloration</strong>. Contraindicated in children <8 and pregnant women."},
+{id:19,subject:"Biochemistry",vignette:"A patient has Type I collagen deficiency affecting bones and teeth. They have blue sclerae, hearing loss, and brittle teeth (dentinogenesis imperfecta).",stem:"What is this condition?",options:["Ehlers-Danlos syndrome","Marfan syndrome","Osteogenesis imperfecta","Scurvy","Homocystinuria"],answer:2,explanation:"<strong>Osteogenesis imperfecta</strong>: Type I collagen defect → brittle bones, blue sclerae, hearing loss, and <strong>dentinogenesis imperfecta</strong> (opalescent teeth with obliterated pulp chambers)."},
+{id:20,subject:"Biochemistry",vignette:"A researcher studies enamel formation. The enamel matrix is almost entirely composed of a single protein.",stem:"What is the major protein in developing enamel matrix?",options:["Collagen type I","Amelogenin","Dentin sialoprotein","Enamelin","Ameloblastin"],answer:1,explanation:"<strong>Amelogenin</strong> comprises ~90% of the enamel matrix during development. It guides hydroxyapatite crystal growth and is later removed during maturation, leaving enamel as ~96% mineral."},
+{id:21,subject:"Biochemistry",vignette:"A caries-prone patient is advised about the mechanism of fluoride in preventing decay.",stem:"What is the primary mechanism of fluoride in caries prevention?",options:["Kills all oral bacteria","Replaces hydroxyl in hydroxyapatite forming fluorapatite","Acts as a dietary supplement only","Prevents plaque formation mechanically","Neutralizes all acid in the mouth"],answer:1,explanation:"Fluoride replaces OH⁻ in hydroxyapatite to form <strong>fluorapatite</strong>, which is more resistant to acid dissolution (critical pH ~4.5 vs 5.5 for hydroxyapatite). It also promotes remineralization and inhibits bacterial enolase."},
+{id:22,subject:"Microbiology",vignette:"A microbiologist cultures plaque from a patient with severe caries. The predominant organism is a gram-positive, facultative anaerobic coccus that produces lactic acid.",stem:"Which organism is most associated with caries initiation?",options:["Porphyromonas gingivalis","Aggregatibacterium actinomycetemcomitans","Streptococcus mutans","Lactobacillus acidophilus","Treponema denticola"],answer:2,explanation:"<strong>Streptococcus mutans</strong> is the primary initiator of dental caries. It adheres to tooth surfaces via glucans (from sucrose via glucosyltransferase), produces lactic acid, and thrives at low pH."},
+{id:23,subject:"Microbiology",vignette:"A patient with severe chronic periodontitis has subgingival plaque cultured. The predominant organisms are gram-negative anaerobic rods and spirochetes.",stem:"Which organism is most strongly associated with chronic periodontitis?",options:["Streptococcus mutans","Streptococcus sanguis","Porphyromonas gingivalis","Actinomyces naeslundii","Veillonella parvula"],answer:2,explanation:"<strong>Porphyromonas gingivalis</strong> is a black-pigmented, gram-negative anaerobic rod and the keystone pathogen in chronic periodontitis. Part of the 'red complex' with T. denticola and T. forsythia."},
+{id:24,subject:"Microbiology",vignette:"A patient with a draining sinus tract from the jaw has 'sulfur granules' in the discharge.",stem:"What organism is responsible?",options:["Staphylococcus aureus","Actinomyces israelii","Mycobacterium tuberculosis","Nocardia asteroides","Streptococcus pyogenes"],answer:1,explanation:"<strong>Actinomyces israelii</strong>: gram-positive, branching filamentous bacteria (not a fungus). Cervicofacial actinomycosis presents with draining sinus tracts and <strong>sulfur granules</strong>. Treat with prolonged penicillin."},
+{id:25,subject:"Endodontics",vignette:"A patient has severe, spontaneous, lingering pain from a mandibular molar that wakes them at night. Cold testing produces intense, prolonged pain. The tooth is tender to percussion.",stem:"What is the most likely pulpal diagnosis?",options:["Reversible pulpitis","Irreversible pulpitis","Pulp necrosis","Normal pulp","Previously treated"],answer:1,explanation:"<strong>Irreversible pulpitis</strong>: spontaneous, lingering pain (especially to cold), nighttime pain, and percussion sensitivity. The pulp has irreversible inflammatory changes and requires root canal therapy or extraction."},
+{id:26,subject:"Endodontics",vignette:"A tooth with a periapical radiolucency does not respond to cold testing, EPT, or heat. There is tenderness to percussion.",stem:"Pulpal and periapical diagnosis?",options:["Normal pulp, normal periapex","Irreversible pulpitis, normal periapex","Pulp necrosis, symptomatic apical periodontitis","Reversible pulpitis, normal periapex","Previously initiated therapy"],answer:2,explanation:"No response to vitality tests = <strong>pulp necrosis</strong>. Periapical radiolucency with percussion tenderness = <strong>symptomatic apical periodontitis</strong>. Requires RCT."},
+{id:27,subject:"Prosthodontics",vignette:"A complete denture patient reports that the denture shifts and clicks during speech. The mandibular denture lacks retention.",stem:"What is the most common cause of poor mandibular denture retention?",options:["Excess vertical dimension","Insufficient baseplate coverage","Severe residual ridge resorption","Overextended flanges","Wrong tooth arrangement"],answer:2,explanation:"<strong>Severe residual ridge resorption</strong> is the most common cause of poor mandibular denture retention. The mandible resorbs faster than the maxilla, and the knife-edge ridge provides minimal support and retention for the denture."},
+{id:28,subject:"Prosthodontics",vignette:"A dentist is fabricating a porcelain-fused-to-metal (PFM) crown. The porcelain bonds to the metal through several mechanisms.",stem:"Which is the PRIMARY mechanism of porcelain-to-metal bonding?",options:["Mechanical interlocking","Van der Waals forces","Chemical (oxide) bonding","Compression bonding","Resin cementation"],answer:2,explanation:"The primary bonding mechanism is <strong>chemical bonding via metal oxides</strong>. During firing, oxide layers form on the metal surface that chemically bond with the porcelain. This is why the metal must be properly oxidized before porcelain application."},
+{id:29,subject:"Orthodontics",vignette:"A 12-year-old presents with Class II Division 1 malocclusion with an overjet of 8mm. The mandible appears retrognathic.",stem:"What is the Angle classification of this malocclusion?",options:["Class I","Class II Division 1","Class II Division 2","Class III","Cannot determine"],answer:1,explanation:"<strong>Class II Division 1</strong>: mesiobuccal cusp of maxillary first molar is mesial to the buccal groove of mandibular first molar + proclined upper incisors with increased overjet. Division 2 has retroclined upper centrals."},
+{id:30,subject:"Orthodontics",vignette:"An 8-year-old has an anterior crossbite affecting a single permanent incisor. The tooth is in a labially blocked-out position.",stem:"What is the ideal timing for crossbite correction?",options:["Wait until all permanent teeth erupt","Correct immediately in the mixed dentition","Only treat in adulthood","Monitor until age 16","Extraction of the affected tooth"],answer:1,explanation:"Anterior crossbites should be corrected <strong>early in the mixed dentition</strong> to prevent adverse growth patterns, gingival recession, and abnormal wear. A simple tongue blade or fixed appliance can tip the incisor labially."},
+{id:31,subject:"Oral Surgery",vignette:"After extraction of a lower third molar, the patient develops severe pain on day 3-4 with a foul taste. The socket appears empty with exposed bone.",stem:"What is this complication?",options:["Osteomyelitis","Alveolar osteitis (dry socket)","Cellulitis","Abscess formation","Normal healing"],answer:1,explanation:"<strong>Alveolar osteitis (dry socket)</strong>: loss of the blood clot from the extraction socket, exposing bone. Occurs 3-4 days post-extraction. Risk factors: smoking, oral contraceptives, mandibular molars. Treat with medicated dressings (eugenol)."},
+{id:32,subject:"Oral Surgery",vignette:"A patient develops progressive trismus, dysphagia, and a swelling in the floor of the mouth after a dental infection of a mandibular molar. The tongue is elevated.",stem:"What is this life-threatening condition?",options:["Peritonsillar abscess","Ludwig angina","Parapharyngeal abscess","Cavernous sinus thrombosis","Buccal space infection"],answer:1,explanation:"<strong>Ludwig angina</strong>: bilateral infection of the submandibular, sublingual, and submental spaces. Board-like swelling of the floor of mouth elevates the tongue, threatening the airway. Requires urgent IV antibiotics and possible surgical drainage. Secure airway first."},
+{id:33,subject:"Pediatric Dentistry",vignette:"A 4-year-old child has rampant caries affecting the maxillary anterior teeth. The child is bottle-fed milk at bedtime.",stem:"What is this pattern of caries called?",options:["Radiation caries","Early childhood caries (nursing bottle caries)","Fluorosis","Amelogenesis imperfecta","Root caries"],answer:1,explanation:"<strong>Early childhood caries (nursing bottle/baby bottle caries)</strong>: caused by prolonged exposure to fermentable carbohydrates (milk, juice) from bottle or breastfeeding at bedtime. Maxillary anteriors affected first (closest to nipple); mandibular anteriors protected by tongue/saliva."},
+{id:34,subject:"Pediatric Dentistry",vignette:"A 9-year-old falls and avulses a permanent maxillary central incisor. The tooth has been out of the mouth for 15 minutes and was stored in milk.",stem:"What is the most appropriate immediate treatment?",options:["Discard the tooth and place an implant later","Reimplant immediately and splint","Store in alcohol for transport","Wait 24 hours before reimplanting","Extract the remaining root"],answer:1,explanation:"<strong>Reimplant immediately</strong> for avulsed permanent teeth. Extra-alveolar time and storage medium are critical. Milk, saliva, or Hank's BSS preserve PDL cells. <30 min: best prognosis. Flexible splint for 2 weeks, follow up for RCT."},
+{id:35,subject:"Radiology",vignette:"A dentist sees a well-defined, round radiopacity at the apex of a mandibular premolar. The tooth is vital and asymptomatic.",stem:"Most likely diagnosis?",options:["Periapical granuloma","Periapical cyst","Periapical cemental dysplasia (mature stage)","Cementoblastoma","Hypercementosis"],answer:2,explanation:"<strong>Periapical cemental dysplasia (focal cemento-osseous dysplasia)</strong> in the mature stage presents as a well-defined radiopacity at the apex of a <strong>vital</strong>, asymptomatic tooth. Most common in middle-aged Black women. Mandibular anteriors classic. No treatment needed."}
+];
+// ═══ NBEO OPTOMETRY QUESTIONS (35) ═══
+const Q_NBEO=[
+{id:1,subject:"Ocular Anatomy",vignette:"A patient presents with sudden, painless monocular vision loss described as a 'curtain coming down.' Fundoscopy reveals a pale, elevated retina.",stem:"Which structure has detached?",options:["Vitreous body","Neurosensory retina from RPE","Ciliary body","Choroid from sclera","Lens from zonules"],answer:1,explanation:"<strong>Retinal detachment</strong>: separation of the neurosensory retina from the retinal pigment epithelium (RPE). The subretinal space is a potential space between these layers. Rhegmatogenous (most common) involves a retinal break."},
+{id:2,subject:"Ocular Anatomy",vignette:"A patient has a dilated, fixed pupil that does not constrict to light or accommodation after head trauma.",stem:"Which nerve is most likely damaged?",options:["Optic nerve (CN II)","Oculomotor nerve (CN III)","Trochlear nerve (CN IV)","Abducens nerve (CN VI)","Sympathetic chain"],answer:1,explanation:"<strong>CN III (oculomotor)</strong> carries parasympathetic fibers to the sphincter pupillae. Damage causes a <strong>dilated, fixed pupil</strong> (mydriasis) plus ptosis and 'down and out' eye position."},
+{id:3,subject:"Ocular Anatomy",vignette:"A 60-year-old patient has progressive loss of peripheral vision. IOP is 28 mmHg. Gonioscopy shows an open angle. Optic disc shows increased cup-to-disc ratio.",stem:"What is the most likely diagnosis?",options:["Acute angle-closure glaucoma","Primary open-angle glaucoma","Normal tension glaucoma","Secondary glaucoma","Ocular hypertension"],answer:1,explanation:"<strong>Primary open-angle glaucoma (POAG)</strong>: chronic, painless, progressive optic neuropathy with elevated IOP, open angles on gonioscopy, and characteristic disc cupping with peripheral visual field loss."},
+{id:4,subject:"Ocular Anatomy",vignette:"A patient presents with sudden onset of severe eye pain, red eye, mid-dilated fixed pupil, corneal edema, and IOP of 58 mmHg.",stem:"What is the diagnosis and initial treatment?",options:["POAG — timolol","Acute angle-closure glaucoma — pilocarpine + timolol + acetazolamide","Anterior uveitis — steroids","Corneal ulcer — antibiotics","Scleritis — NSAIDs"],answer:1,explanation:"<strong>Acute angle-closure glaucoma</strong>: emergency. Iris bows forward blocking trabecular meshwork. Treat immediately: topical pilocarpine (constricts pupil, opens angle), timolol (decreases aqueous production), IV/PO acetazolamide, then definitive laser peripheral iridotomy."},
+{id:5,subject:"Ocular Anatomy",vignette:"An infant is found to have a white pupillary reflex (leukocoria) on examination.",stem:"What is the most serious condition in the differential diagnosis?",options:["Congenital cataract","Retinoblastoma","Persistent fetal vasculature","Toxocariasis","Coats disease"],answer:1,explanation:"<strong>Retinoblastoma</strong> is the most serious cause of leukocoria (white pupillary reflex) and must be ruled out first. It's the most common intraocular malignancy of childhood, associated with RB1 gene mutation (chromosome 13q14)."},
+{id:6,subject:"Optics",vignette:"A patient's spectacle prescription is −3.00 DS. They ask about the nature of their refractive error.",stem:"What type of refractive error does this patient have?",options:["Hyperopia","Myopia","Astigmatism","Presbyopia","Emmetropia"],answer:1,explanation:"A minus (−) lens corrects <strong>myopia (nearsightedness)</strong>. The eye is too long or the cornea too steep, so light focuses in front of the retina. A diverging (minus) lens moves the focal point back onto the retina."},
+{id:7,subject:"Optics",vignette:"A 45-year-old emmetropic patient complains of difficulty reading at near distance. Distance vision is clear.",stem:"What is the most likely cause?",options:["Myopia progression","Presbyopia","Hyperopia","Nuclear cataract","Accommodative spasm"],answer:1,explanation:"<strong>Presbyopia</strong>: age-related loss of accommodation due to lens hardening and loss of elasticity. Begins around age 40-45. The ciliary muscle contracts but the lens cannot change shape sufficiently. Corrected with plus lenses for near."},
+{id:8,subject:"Optics",vignette:"During retinoscopy, the examiner notes a 'with' movement in the vertical meridian and an 'against' movement in the horizontal meridian.",stem:"What type of astigmatism is present?",options:["Simple myopic astigmatism","Compound hyperopic astigmatism","Mixed astigmatism","Simple hyperopic astigmatism","Irregular astigmatism"],answer:2,explanation:"<strong>Mixed astigmatism</strong>: one meridian is myopic (against movement) and the other is hyperopic (with movement). The circle of least confusion falls on the retina, with the two focal lines straddling it."},
+{id:9,subject:"Ocular Disease",vignette:"A 70-year-old woman presents with gradual central vision loss. Fundoscopy shows drusen and geographic atrophy of the RPE in the macula.",stem:"What is the diagnosis?",options:["Diabetic macular edema","Wet AMD","Dry AMD (non-exudative)","Central serous chorioretinopathy","Macular hole"],answer:2,explanation:"<strong>Dry AMD</strong>: characterized by drusen (yellow deposits under RPE) and geographic atrophy. Accounts for 85-90% of AMD. Progressive, gradual central vision loss. No cure; AREDS2 supplements may slow progression."},
+{id:10,subject:"Ocular Disease",vignette:"The same patient returns 6 months later with sudden worsening of central vision. Amsler grid shows metamorphopsia. OCT reveals subretinal fluid and choroidal neovascularization.",stem:"What has this condition progressed to?",options:["Geographic atrophy progression","Wet (exudative) AMD","Central retinal vein occlusion","Retinal detachment","Macular hole"],answer:1,explanation:"<strong>Wet (exudative) AMD</strong>: abnormal choroidal neovascularization grows under the retina, leaking fluid/blood. Causes sudden vision loss and metamorphopsia. Treat with <strong>anti-VEGF injections</strong> (ranibizumab, aflibercept, bevacizumab)."},
+{id:11,subject:"Ocular Disease",vignette:"A 55-year-old diabetic presents with multiple dot-blot hemorrhages, hard exudates, and cotton wool spots. No neovascularization is seen.",stem:"What stage of diabetic retinopathy?",options:["Mild NPDR","Moderate NPDR","Severe NPDR","Proliferative DR","Diabetic macular edema only"],answer:1,explanation:"<strong>Moderate NPDR</strong>: more than mild (microaneurysms only) but less than severe (4-2-1 rule). Features: dot-blot hemorrhages, hard exudates (lipid deposits), cotton wool spots (nerve fiber layer infarcts), but no neovascularization."},
+{id:12,subject:"Ocular Disease",vignette:"A diabetic patient has neovascularization of the disc (NVD) and neovascularization elsewhere (NVE). Visual acuity is reduced.",stem:"What is the treatment for proliferative diabetic retinopathy?",options:["Observation only","AREDS supplements","Panretinal photocoagulation (PRP) and/or anti-VEGF","Topical steroids","Vitrectomy only"],answer:2,explanation:"<strong>Proliferative DR</strong>: neovascularization (disc or elsewhere). Treat with <strong>panretinal photocoagulation (PRP)</strong> to reduce VEGF drive, and/or <strong>anti-VEGF injections</strong>. PRP ablates peripheral retina to reduce oxygen demand."},
+{id:13,subject:"Ocular Disease",vignette:"A 30-year-old presents with a painful, red eye, photophobia, and perilimbal injection (ciliary flush). Slit lamp shows cells and flare in the anterior chamber.",stem:"What is the diagnosis?",options:["Bacterial conjunctivitis","Acute anterior uveitis (iritis)","Acute angle-closure glaucoma","Corneal abrasion","Episcleritis"],answer:1,explanation:"<strong>Acute anterior uveitis (iritis)</strong>: ciliary flush, photophobia, miosis, cells and flare in AC. Associated with HLA-B27 conditions (ankylosing spondylitis, reactive arthritis). Treat with cycloplegics + topical steroids."},
+{id:14,subject:"Ocular Disease",vignette:"A patient presents with sudden, painless, unilateral vision loss. Fundoscopy shows a pale retina with a cherry-red spot at the macula.",stem:"What is the most likely diagnosis?",options:["Central retinal vein occlusion","Central retinal artery occlusion","Optic neuritis","Retinal detachment","Vitreous hemorrhage"],answer:1,explanation:"<strong>Central retinal artery occlusion (CRAO)</strong>: embolic event → pale ischemic retina with cherry-red spot (fovea is supplied by choroidal circulation). Ocular emergency — massage globe, anterior chamber paracentesis, vasodilators within 90 minutes."},
+{id:15,subject:"Ocular Disease",vignette:"A patient with MS presents with painful eye movements and reduced visual acuity. There is an afferent pupillary defect (RAPD/Marcus Gunn pupil).",stem:"What is the most likely diagnosis?",options:["Anterior uveitis","Optic neuritis","Papilledema","CRAO","Retrobulbar hemorrhage"],answer:1,explanation:"<strong>Optic neuritis</strong>: inflammation of the optic nerve, strongly associated with MS. Triad: painful eye movements, decreased VA, RAPD. Disc may appear normal initially (retrobulbar). MRI shows enhancement. Treat with IV methylprednisolone."},
+{id:16,subject:"Ocular Pharmacology",vignette:"A patient with open-angle glaucoma is started on a prostaglandin analog eye drop.",stem:"What is the mechanism of action of latanoprost?",options:["Decreases aqueous production","Increases uveoscleral outflow","Increases trabecular outflow","Constricts the pupil","Blocks aqueous humor secretion"],answer:1,explanation:"<strong>Latanoprost</strong> (PGF2α analog): increases <strong>uveoscleral outflow</strong> by remodeling the extracellular matrix of the ciliary muscle. Side effects: iris darkening, eyelash growth, periorbital fat atrophy."},
+{id:17,subject:"Ocular Pharmacology",vignette:"A glaucoma patient on timolol eye drops develops bradycardia and bronchospasm.",stem:"What class of drug is timolol?",options:["Alpha agonist","Beta blocker","Prostaglandin analog","Carbonic anhydrase inhibitor","Cholinergic agonist"],answer:1,explanation:"<strong>Timolol</strong> is a non-selective <strong>beta-blocker</strong> that reduces aqueous humor production. Systemic absorption can cause bradycardia, bronchospasm, and depression. Contraindicated in asthma/COPD and heart block."},
+{id:18,subject:"Ocular Pharmacology",vignette:"A patient is given tropicamide drops for pupil dilation before a fundus exam.",stem:"What is the mechanism of mydriasis from tropicamide?",options:["Stimulates iris dilator muscle (sympathomimetic)","Blocks iris sphincter muscle (parasympatholytic)","Inhibits accommodation only","Constricts ciliary muscle","Blocks aqueous production"],answer:1,explanation:"<strong>Tropicamide</strong> is a short-acting <strong>muscarinic (parasympatholytic) antagonist</strong>. It blocks ACh at the iris sphincter muscle → pupil dilation (mydriasis) and at the ciliary muscle → cycloplegia."},
+{id:19,subject:"Contact Lenses",vignette:"A soft contact lens wearer presents with a painful red eye. Slit lamp shows a white, round corneal infiltrate with overlying epithelial defect.",stem:"What is the most likely diagnosis and common causative organism?",options:["Viral keratitis — HSV","Bacterial keratitis — Pseudomonas aeruginosa","Acanthamoeba keratitis","Fungal keratitis — Fusarium","Sterile corneal infiltrate"],answer:1,explanation:"<strong>Bacterial keratitis</strong> is the most common infectious complication of contact lens wear. <strong>Pseudomonas aeruginosa</strong> is the #1 cause in CL wearers. Presents with rapid-onset pain, white infiltrate, mucopurulent discharge. Treat aggressively with fortified antibiotics."},
+{id:20,subject:"Contact Lenses",vignette:"A contact lens wearer from a developing country develops a ring-shaped corneal infiltrate with severe pain. The patient had been rinsing lenses with tap water.",stem:"What is the most likely organism?",options:["Pseudomonas","Staphylococcus","Acanthamoeba","Fusarium","Serratia"],answer:2,explanation:"<strong>Acanthamoeba keratitis</strong>: ring-shaped (perineural) infiltrate, severe pain disproportionate to findings. Associated with <strong>tap water/homemade saline</strong> use with contact lenses. Diagnosis: confocal microscopy, culture on non-nutrient agar with E. coli overlay."},
+{id:21,subject:"Binocular Vision",vignette:"A child is noted to have an inward turning of the left eye that is constant. Cover test confirms left esotropia.",stem:"If left untreated, what visual consequence may develop in the deviating eye?",options:["Myopia","Hyperopia","Amblyopia","Nystagmus","Accommodation excess"],answer:2,explanation:"<strong>Amblyopia</strong> (lazy eye): reduced best-corrected VA in the deviating eye due to cortical suppression during visual development. The brain ignores input from the misaligned eye. Must be treated before age 7-8 (critical period) with patching and/or penalization."},
+{id:22,subject:"Binocular Vision",vignette:"A 50-year-old man presents with sudden diplopia. The right eye cannot abduct. All other eye movements are normal.",stem:"Which cranial nerve is affected?",options:["CN III","CN IV","CN VI","CN VII","CN II"],answer:2,explanation:"<strong>CN VI (abducens)</strong> innervates the lateral rectus. Palsy causes inability to abduct the eye → esotropia and horizontal diplopia worst at distance and when looking toward the affected side."},
+{id:23,subject:"Binocular Vision",vignette:"A 4-year-old with a history of constant left esotropia is found to have VA of 20/20 OD and 20/100 OS. The left eye has not developed proper visual acuity.",stem:"What is the first-line treatment for amblyopia?",options:["Surgery immediately","Correct refractive error + patching of the better eye","Prism glasses","Vision therapy only","No treatment — too late"],answer:1,explanation:"<strong>First-line amblyopia treatment</strong>: correct any refractive error, then <strong>patch the better (dominant) eye</strong> to force the brain to use the amblyopic eye. Atropine penalization is an alternative. Surgery may be needed later for strabismus."},
+{id:24,subject:"Systemic Disease",vignette:"A diabetic patient has an HbA1c of 9.5%. During dilated exam, you find multiple flame hemorrhages, dilated veins, and cotton wool spots.",stem:"In addition to glycemic control, what systemic factor most reduces retinopathy progression?",options:["Weight loss alone","Blood pressure control","Vitamin supplementation","Exercise alone","Cholesterol lowering alone"],answer:1,explanation:"<strong>Blood pressure control</strong> is the most important modifiable factor after glycemic control for reducing diabetic retinopathy progression. UKPDS showed tight BP control reduced retinopathy risk by 34%. Target <130/80 mmHg."},
+{id:25,subject:"Systemic Disease",vignette:"A 65-year-old woman with giant cell arteritis presents with sudden vision loss. She has jaw claudication and elevated ESR (90 mm/hr).",stem:"What is the most critical immediate treatment to prevent bilateral blindness?",options:["Aspirin","Oral prednisone only","High-dose IV methylprednisolone","Methotrexate","Observation and temporal artery biopsy first"],answer:2,explanation:"<strong>GCA with vision loss = emergency</strong>. Start <strong>high-dose IV methylprednisolone</strong> immediately — do NOT wait for biopsy results. Anterior ischemic optic neuropathy (AION) can progress to bilateral blindness within days. Temporal artery biopsy should be done within 2 weeks."},
+{id:26,subject:"Systemic Disease",vignette:"A patient on hydroxychloroquine for lupus requires ocular monitoring.",stem:"What is the primary ocular toxicity of hydroxychloroquine?",options:["Cataracts","Bull's eye maculopathy (retinal toxicity)","Optic neuritis","Glaucoma","Corneal deposits only"],answer:1,explanation:"<strong>Hydroxychloroquine retinal toxicity</strong>: accumulates in RPE → classic <strong>bull's eye maculopathy</strong> (ring of RPE depigmentation around the fovea). Screening: baseline and annual OCT/visual fields after 5 years (or sooner with risk factors). Irreversible if not caught early."},
+{id:27,subject:"Cornea",vignette:"A patient presents with a dendritic ulcer on the cornea that stains with fluorescein. There is decreased corneal sensation.",stem:"What is the causative organism?",options:["Pseudomonas","HSV (herpes simplex virus)","Acanthamoeba","Fusarium","Varicella zoster"],answer:1,explanation:"<strong>HSV keratitis</strong>: pathognomonic <strong>dendritic ulcer</strong> with terminal bulbs that stains with fluorescein. Decreased corneal sensation (CN V1 affected). Treat with topical antivirals (ganciclovir gel) or oral valacyclovir. Steroids alone are CONTRAINDICATED."},
+{id:28,subject:"Cornea",vignette:"An elderly patient with a history of rosacea presents with a progressive growth of vascularized tissue from the nasal conjunctiva onto the cornea.",stem:"What is this condition?",options:["Pinguecula","Pterygium","Pannus","Conjunctival melanoma","Dermoid"],answer:1,explanation:"<strong>Pterygium</strong>: fibrovascular growth from the conjunctiva onto the cornea, typically nasally. Associated with UV exposure. Excision is indicated when it threatens the visual axis or causes significant astigmatism."},
+{id:29,subject:"Pediatric Optometry",vignette:"A newborn is found to have bilateral white cataracts. The mother had a viral illness during the first trimester with rash, lymphadenopathy, and joint pain.",stem:"What is the most likely cause?",options:["Galactosemia","Congenital rubella syndrome","Down syndrome","Marfan syndrome","Toxoplasmosis"],answer:1,explanation:"<strong>Congenital rubella syndrome</strong>: triad of cataracts, sensorineural deafness, and cardiac defects (PDA). First trimester maternal rubella causes the most severe fetal effects. Rubella vaccination has dramatically reduced incidence."},
+{id:30,subject:"Pediatric Optometry",vignette:"A 2-year-old presents with unilateral leukocoria and strabismus. B-scan ultrasonography shows a calcified intraocular mass.",stem:"What is the most likely diagnosis?",options:["Congenital cataract","Retinoblastoma","Persistent fetal vasculature","Retinopathy of prematurity","Coats disease"],answer:1,explanation:"<strong>Retinoblastoma</strong>: most common intraocular malignancy of childhood. Leukocoria + strabismus + calcified mass. RB1 tumor suppressor gene (13q14). Bilateral in 40% (germline mutation). Enucleation, chemotherapy, or focal treatments depending on staging."},
+{id:31,subject:"Neuro-Ophthalmology",vignette:"A patient with a pituitary adenoma has visual field loss. Automated perimetry shows bilateral temporal hemianopia.",stem:"What structure is being compressed?",options:["Optic nerve","Optic chiasm","Optic tract","LGN","Visual cortex"],answer:1,explanation:"<strong>Optic chiasm compression</strong> (by pituitary adenoma) affects crossing nasal fibers → <strong>bitemporal hemianopia</strong>. The chiasm lies directly above the pituitary. Lesions behind the chiasm cause homonymous defects."},
+{id:32,subject:"Neuro-Ophthalmology",vignette:"A patient has a right homonymous hemianopia (loss of the right visual field in both eyes).",stem:"Where is the lesion?",options:["Right optic nerve","Optic chiasm","Left optic tract, LGN, or radiations","Right optic tract","Left optic nerve"],answer:2,explanation:"Right homonymous hemianopia = loss of temporal field OD + nasal field OS = <strong>left post-chiasmal lesion</strong> (left optic tract, LGN, optic radiations, or left visual cortex). A stroke in the left PCA territory is the most common cause."},
+{id:33,subject:"Neuro-Ophthalmology",vignette:"A 25-year-old woman presents with bilateral papilledema, headaches worse in the morning, and transient visual obscurations. She is obese. MRI is normal. CSF opening pressure is elevated.",stem:"What is the diagnosis?",options:["Brain tumor","Optic neuritis","Idiopathic intracranial hypertension (pseudotumor cerebri)","Meningitis","Normal-pressure hydrocephalus"],answer:2,explanation:"<strong>IIH (pseudotumor cerebri)</strong>: elevated ICP with normal imaging. Classic patient: obese woman of childbearing age. Bilateral papilledema, headaches, pulsatile tinnitus, transient visual obscurations. Treat: weight loss, acetazolamide, serial LPs. Risk of permanent vision loss."},
+{id:34,subject:"Low Vision",vignette:"A patient with AMD and BCVA of 20/200 wants to read newspaper print.",stem:"What magnification is needed to read 1M print?",options:["2x","5x","10x","20x","No magnification needed"],answer:2,explanation:"<strong>Kestenbaum's rule</strong>: required magnification = reciprocal of distance VA fraction. 20/200 = 1/10, so <strong>10x magnification</strong> is needed for 1M (newspaper) print. This can be achieved with a +40D magnifier or equivalent electronic device."},
+{id:35,subject:"Low Vision",vignette:"A patient with retinitis pigmentosa has a visual field of 10 degrees in each eye. They have difficulty with mobility and orientation.",stem:"What type of visual field loss does RP typically cause?",options:["Central scotoma","Bitemporal hemianopia","Ring scotoma progressing to tunnel vision","Altitudinal defect","Homonymous hemianopia"],answer:2,explanation:"<strong>RP causes progressive peripheral visual field loss</strong>: starts as a mid-peripheral ring scotoma (corresponding to rod-rich areas) and progresses to severe constriction ('tunnel vision'). Central vision may be preserved until late stages. Night blindness (nyctalopia) is often the first symptom."}
+];
+
+const QBANKS={usmle:Q_USMLE,nbde:Q_NBDE,nbeo:Q_NBEO};
+// ═══ STATE ═══
+let st={qs:[],ci:0,ans:{},mode:'practice',ti:null,tl:0,tt:0};
+function lP(){try{return JSON.parse(localStorage.getItem('bb_p'))||{xp:0,level:1,streak:0,ld:null,ta:0,tc:0,ss:{},ach:[]};}catch(e){return{xp:0,level:1,streak:0,ld:null,ta:0,tc:0,ss:{},ach:[]};}}
+function sP(p){try{localStorage.setItem('bb_p',JSON.stringify(p));}catch(e){}}
+function lS(){try{return JSON.parse(localStorage.getItem('bb_s'))||{theme:'blackbone',color:'bone',font:'garamond',appsize:'m',qsize:'m',icons:'classic',dp:'🩺',tiles:'2'};}catch(e){return{theme:'blackbone',color:'bone',font:'garamond',appsize:'m',qsize:'m',icons:'classic',dp:'🩺',tiles:'2'};}}
+function sS(s){try{localStorage.setItem('bb_s',JSON.stringify(s));}catch(e){}}
+function lU(){try{return JSON.parse(localStorage.getItem('bb_u'))||[];}catch(e){return[];}}
+function sU(u){try{localStorage.setItem('bb_u',JSON.stringify(u));}catch(e){}}
+function lC(){try{return JSON.parse(localStorage.getItem('bb_c'))||null;}catch(e){return null;}}
+function sC(u){try{localStorage.setItem('bb_c',JSON.stringify(u));}catch(e){}}
+function getTrack(){const c=lC();return(c&&c.track)||'usmle';}
+function getQs(){return QBANKS[getTrack()]||Q_USMLE;}
+
+// ═══ AUTH ═══
+function initDPGrid(id){const g=document.getElementById(id);if(!g)return;const s=lS();g.innerHTML=AVATARS.map(a=>`<div class="dp-item ${s.dp===a?'active':''}" onclick="pickDP('${a}','${id}')">${a}</div>`).join('');}
+function pickDP(a,gid){const s=lS();s.dp=a;sS(s);initDPGrid(gid);if(gid==='dpSet'){const c=lC();if(c){c.dp=a;sC(c);}updateGreeting();}}
+function doSignup(){
+  const n=document.getElementById('suN').value.trim(),e=document.getElementById('suE').value.trim(),p=document.getElementById('suP').value,p2=document.getElementById('suP2').value,err=document.getElementById('suErr');
+  const track=document.getElementById('suTrack').value;
+  const dp=lS().dp||'🩺';
+  if(!n||!e||!p){err.textContent='All fields required';return;}if(p.length<4){err.textContent='Password: min 4 chars';return;}if(p!==p2){err.textContent='Passwords don\'t match';return;}
+  const us=lU();if(us.find(u=>u.email===e)){err.textContent='Email exists';return;}
+  us.push({name:n,email:e,pwd:p,track,dp});sU(us);sC({name:n,email:e,track,dp});enterApp();
+}
+function doLogin(){
+  const e=document.getElementById('liE').value.trim(),p=document.getElementById('liP').value,err=document.getElementById('liErr');
+  if(!e||!p){err.textContent='Email & password required';return;}
+  const u=lU().find(x=>x.email===e&&x.pwd===p);
+  if(!u){err.textContent='Invalid credentials';return;}
+  sC({name:u.name,email:u.email,track:u.track||'usmle',dp:u.dp||'🩺'});enterApp();
+}
+function skipAuth(){sC({name:'Guest',email:'guest',track:'usmle',dp:'🩺'});enterApp();}
+function doLogout(){localStorage.removeItem('bb_c');location.reload();}
+function enterApp(){updateTopBar();updateGreeting();updateHome();S('homeScreen');}
+
+// ═══ SETTINGS ═══
+function renderSettings(){
+  const s=lS();
+  document.getElementById('thG').innerHTML=THEMES.map(t=>`<div class="tp ${s.theme===t.id?'a':''}" onclick="setT('${t.id}')"><div class="td" style="background:${t.d}"></div><div><div class="tpn">${t.n}</div><div class="tps">${t.s}</div></div></div>`).join('');
+  document.getElementById('clG').innerHTML=COLORS.map(c=>`<div class="cdot ${s.color===c.id?'a':''}" style="background:${c.hex}" onclick="setC('${c.id}')"></div>`).join('');
+  document.getElementById('icG').innerHTML=ICONS.map(i=>`<div class="ip ${s.icons===i.id?'a':''}" onclick="setI('${i.id}')"><div class="icons">${i.s}</div><div class="iname">${i.n}</div></div>`).join('');
+  document.getElementById('fnL').innerHTML=FONTS.map(f=>`<div class="fp ${s.font===f.id?'a':''}" onclick="setF('${f.id}')"><div class="fpn" style="font-family:${f.f}">${f.n}</div><div class="fps">${f.s}</div></div>`).join('');
+  document.getElementById('asR').innerHTML=SIZES.map((z,i)=>`<div class="sp ${s.appsize===z?'a':''}" onclick="setAS('${z}')">${SIZE_LABELS[i]}</div>`).join('');
+  document.getElementById('qsR').innerHTML=SIZES.map((z,i)=>`<div class="sp ${s.qsize===z?'a':''}" onclick="setQS('${z}')">${SIZE_LABELS[i]}</div>`).join('');
+  // Tile slider
+  const tv=s.tiles||'2';
+  document.getElementById('tileSlider').value=tv;
+  document.getElementById('tileVal').textContent=tv+'×'+tv;
+  renderTilePreview(tv);
+  initDPGrid('dpSet');
+  const c=lC();
+  if(c&&c.email!=='guest'){document.getElementById('pcArea').innerHTML=`<div class="pcard"><div class="pav">${c.dp||'🩺'}</div><div><div class="pname">${c.name}</div><div class="pemail">${c.email}</div></div></div>`;}
+  else document.getElementById('pcArea').innerHTML='';
+}
+function setT(id){const s=lS();s.theme=id;sS(s);applyS();renderSettings();}
+function setC(id){const s=lS();s.color=id;sS(s);applyS();renderSettings();}
+function setI(id){const s=lS();s.icons=id;sS(s);applyS();renderSettings();updateIcons();}
+function setF(id){const s=lS();s.font=id;sS(s);applyS();renderSettings();}
+function setAS(id){const s=lS();s.appsize=id;sS(s);applyS();renderSettings();}
+function setQS(id){const s=lS();s.qsize=id;sS(s);applyS();renderSettings();}
+function onTileSlide(v){const s=lS();s.tiles=v;sS(s);applyS();renderTilePreview(v);document.getElementById('tileVal').textContent=v+'×'+v;}
+function renderTilePreview(v){
+  const ic=(ICONS.find(i=>i.id===lS().icons)||ICONS[1]).icons;
+  const items=['Quick Fire','Practice','Exam','All Qs','Stats','Track'];
+  let h='<div class="mg" style="margin:0">';
+  const count=Math.min(parseInt(v)*2,6);
+  for(let i=0;i<count;i++){h+=`<div class="mc" style="pointer-events:none"><div class="mci">${ic[i%5]}</div><div class="mct">${items[i%6]}</div><div class="mcd">Preview</div></div>`;}
+  h+='</div>';
+  document.getElementById('tilePrev').innerHTML=h;
+}
+function applyS(){const s=lS();const b=document.body;b.setAttribute('data-theme',s.theme);b.setAttribute('data-color',s.color);b.setAttribute('data-font',s.font);b.setAttribute('data-appsize',s.appsize);b.setAttribute('data-qsize',s.qsize);b.setAttribute('data-tiles',s.tiles||'2');try{document.querySelector('meta[name="theme-color"]').content=getComputedStyle(b).getPropertyValue('--bg').trim();}catch(e){}}
+function updateIcons(){const s=lS();const ic=ICONS.find(i=>i.id===s.icons)||ICONS[1];for(let i=0;i<5;i++){const el=document.getElementById('ic'+i);if(el)el.textContent=ic.icons[i];}}
+
+// ═══ UI ═══
+function updateTopBar(){
+  const p=lP(),xl=p.level*100,xi=p.xp%xl;
+  document.getElementById('lvl').textContent=p.level;document.getElementById('xpd').textContent=p.xp;
+  document.getElementById('xbb').style.width=(xi/xl*100)+'%';
+  const t=new Date().toDateString(),sk=p.ld===t?p.streak:(p.ld===new Date(Date.now()-864e5).toDateString()?p.streak:0);
+  document.getElementById('stk').textContent=sk+' Day Streak';
+  document.getElementById('trackLabel').textContent=TRACK_INFO[getTrack()].label;
+}
+function updateGreeting(){
+  const c=lC(),el=document.getElementById('ug');
+  if(c&&c.name!=='Guest')el.innerHTML=`<span class="udp">${c.dp||'🩺'}</span>Welcome back, ${c.name.split(' ')[0]}`;
+  else el.textContent='';
+}
+function updateHome(){
+  const tr=getTrack(),ti=TRACK_INFO[tr];
+  document.getElementById('homePre').textContent=ti.pre;
+  document.getElementById('homeTitle').innerHTML=ti.title;
+  document.getElementById('homeSub').textContent=ti.sub;
+  document.getElementById('allQCount').textContent=`Full Bank · ${getQs().length} Q`;
+  updateIcons();
+}
+function switchTrack(tr){const c=lC();if(c){c.track=tr;sC(c);}updateTopBar();updateHome();}
+function S(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);if(id==='settingsScreen')renderSettings();if(id==='signupScreen')initDPGrid('dpGrid');}
+function goHome(){clearInterval(st.ti);updateTopBar();S('homeScreen');}
+function sh(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+// ═══ GAME ═══
+function showSubj(m){
+  const Q=getQs(),SUBJ=[...new Set(Q.map(q=>q.subject))],p=lP(),list=document.getElementById('sjL');
+  let h='';
+  if(m==='all')h+=`<div class="sji" onclick="startSess(null,'practice')"><div><div class="sjn">All Subjects</div></div><div class="sjc">${Q.length} Q</div></div>`;
+  SUBJ.forEach(s=>{const qs=Q.filter(q=>q.subject===s),st2=p.ss[s]||{a:0,c:0},pc=st2.a>0?Math.round(st2.c/st2.a*100):0;
+    h+=`<div class="sji" onclick="startSess('${s}','practice')"><div><div class="sjn">${s}</div></div><div style="display:flex;align-items:center;gap:.8rem"><div class="sjp"><div class="sjpf" style="width:${pc}%"></div></div><div class="sjc">${qs.length} Q</div></div></div>`;});
+  list.innerHTML=h;S('subjectScreen');
+}
+function quickPractice(){st.qs=sh([...getQs()]).slice(0,10);st.ci=0;st.ans={};st.mode='practice';showQ();S('questionScreen');}
+function startSess(subj,mode){let pool=subj?getQs().filter(q=>q.subject===subj):[...getQs()];st.qs=sh(pool);st.ci=0;st.ans={};st.mode=mode;showQ();S('questionScreen');}
+function startExam(){st.qs=sh([...getQs()]).slice(0,40);st.ci=0;st.ans={};st.mode='exam';st.tl=40*75;st.tt=st.tl;startTm();showQ();S('questionScreen');}
+function startTm(){clearInterval(st.ti);st.ti=setInterval(()=>{st.tl--;const m=Math.floor(st.tl/60),s=st.tl%60,el=document.getElementById('qT');el.textContent=`${m}:${s.toString().padStart(2,'0')}`;el.className=st.tl<120?'qtm w':'qtm';if(st.tl<=0){clearInterval(st.ti);finish();}},1000);}
+
+function showQ(){
+  const q=st.qs[st.ci],n=st.qs.length;
+  document.getElementById('qC').textContent=`Q ${st.ci+1} / ${n}`;
+  document.getElementById('qP').style.width=((st.ci+1)/n*100)+'%';
+  document.getElementById('qS').textContent=q.subject;
+  document.getElementById('qV').innerHTML=q.vignette;
+  document.getElementById('qSt').textContent=q.stem;
+  if(st.mode!=='exam')document.getElementById('qT').textContent='';
+  const L='ABCDE';let oH='';
+  q.options.forEach((o,i)=>{const ans=st.ans[q.id]!==undefined&&st.mode!=='exam';let c='qo';
+    if(ans){if(i===q.answer)c+=' ok';else if(i===st.ans[q.id])c+=' no';else c+=' dim';}
+    else if(st.ans[q.id]===i)c+=' sel';
+    oH+=`<div class="${c}" onclick="sel(${q.id},${i})"><div class="ol2">${L[i]}</div><div class="ot">${o}</div></div>`;});
+  document.getElementById('qO').innerHTML=oH;
+  const eD=document.getElementById('qEx');
+  if(st.ans[q.id]!==undefined&&st.mode!=='exam')eD.innerHTML=`<div class="qex"><div class="qext">Explanation</div><div class="qexb">${q.explanation}</div></div>`;
+  else eD.innerHTML='';
+  let nH='<div class="br">';
+  if(st.ci>0)nH+=`<button class="btn" onclick="pQ()">Prev</button>`;
+  nH+=st.ci<n-1?`<button class="btn bp" onclick="nQ()">Next</button>`:`<button class="btn bp" onclick="finish()">Finish</button>`;
+  nH+='</div>';
+  if(st.mode==='exam')nH+=`<div style="padding:0 1.5rem .8rem"><button class="btn bb" onclick="if(confirm('End exam?'))finish()">End Exam</button></div>`;
+  document.getElementById('qN').innerHTML=nH;
+}
+function sel(qid,idx){if(st.ans[qid]!==undefined&&st.mode!=='exam')return;st.ans[qid]=idx;if(st.mode==='exam'){document.querySelectorAll('.qo').forEach((e,i)=>{e.classList.remove('sel');if(i===idx)e.classList.add('sel');});return;}showQ();}
+function nQ(){if(st.ci<st.qs.length-1){st.ci++;showQ();window.scrollTo(0,0);}}
+function pQ(){if(st.ci>0){st.ci--;showQ();window.scrollTo(0,0);}}
+
+// ═══ RESULTS ═══
+function finish(){
+  clearInterval(st.ti);const qs=st.qs;let ok=0,att=0;const sbd={};
+  qs.forEach(q=>{if(!sbd[q.subject])sbd[q.subject]={t:0,c:0};sbd[q.subject].t++;if(st.ans[q.id]!==undefined){att++;if(st.ans[q.id]===q.answer){ok++;sbd[q.subject].c++;}}});
+  const pc=qs.length>0?Math.round(ok/qs.length*100):0;
+  const gr=pc>=90?'Exceptional':pc>=75?'Passing':pc>=60?'Borderline':'Needs Improvement';
+  const bxp=ok*10,bonus=st.mode==='exam'?Math.round(bxp*.5):0,txp=bxp+bonus;
+  const p=lP();p.xp+=txp;p.level=Math.floor(p.xp/100)+1;p.ta+=att;p.tc+=ok;
+  const td=new Date().toDateString(),yd=new Date(Date.now()-864e5).toDateString();
+  if(p.ld===td){}else if(p.ld===yd)p.streak++;else p.streak=1;p.ld=td;
+  Object.keys(sbd).forEach(s=>{if(!p.ss[s])p.ss[s]={a:0,c:0};p.ss[s].a+=sbd[s].t;p.ss[s].c+=sbd[s].c;});sP(p);
+  document.getElementById('rSc').textContent=pc+'%';document.getElementById('rGr').textContent=gr;
+  document.getElementById('rLb').textContent=st.mode==='exam'?'Exam Score':'Practice Score';
+  let stH=`<div class="rst"><div class="v">${ok}</div><div class="l">Correct</div></div><div class="rst"><div class="v">${qs.length-ok}</div><div class="l">Wrong</div></div><div class="rst"><div class="v">${qs.length}</div><div class="l">Total</div></div>`;
+  document.getElementById('rSt').innerHTML=stH;
+  document.getElementById('rXp').innerHTML=`<div class="rxpv">+${txp} XP</div><div class="rxpl">${bonus>0?'Exam bonus +'+bonus:'Practice'}</div>`;
+  let bH='';Object.keys(sbd).sort().forEach(s=>{const d=sbd[s],sp=d.t>0?Math.round(d.c/d.t*100):0,cl=sp>=75?'var(--ok)':sp>=50?'var(--ac)':'var(--no)';
+    bH+=`<div class="bdi"><div class="bdn">${s}</div><div style="display:flex;align-items:center;gap:.6rem"><div class="bdb"><div class="bdbf" style="width:${sp}%;background:${cl}"></div></div><div class="bds">${d.c}/${d.t}</div></div></div>`;});
+  document.getElementById('rBd').innerHTML=bH;
+  chkAch(p,pc,ok);S('resultsScreen');
+}
+function showReview(){let h='';const L='ABCDE';
+  st.qs.forEach((q,i)=>{const a=st.ans[q.id],o=a===q.answer;
+    h+=`<div class="ri" onclick="rvQ(${i})"><div class="rit"><div class="rin">Q${i+1} · ${q.subject}</div><div class="rir ${o?'ct':'wt'}">${a!==undefined?(o?'✓':'✗ '+L[q.answer]):'Skip'}</div></div><div class="ris">${q.stem}</div></div>`;});
+  document.getElementById('rvL').innerHTML=h;S('reviewScreen');
+}
+function rvQ(i){st.ci=i;st.mode='review';const q=st.qs[i];if(st.ans[q.id]===undefined)st.ans[q.id]=-1;showQ();S('questionScreen');}
+function showStats(){
+  const p=lP(),Q=getQs(),SUBJ=[...new Set(Q.map(q=>q.subject))];
+  document.getElementById('stTot').textContent=p.ta;
+  const op=p.ta>0?Math.round(p.tc/p.ta*100):0;
+  document.getElementById('stG').innerHTML=`<div class="rst"><div class="v">${p.tc}</div><div class="l">Correct</div></div><div class="rst"><div class="v">${op}%</div><div class="l">Accuracy</div></div><div class="rst"><div class="v">${p.streak}</div><div class="l">Streak</div></div>`;
+  let bH='';SUBJ.forEach(s=>{const d=p.ss[s]||{a:0,c:0};const sp=d.a>0?Math.round(d.c/d.a*100):0;const cl=sp>=75?'var(--ok)':sp>=50?'var(--ac)':'var(--no)';
+    bH+=`<div class="bdi"><div class="bdn">${s}</div><div style="display:flex;align-items:center;gap:.6rem"><div class="bdb"><div class="bdbf" style="width:${sp}%;background:${cl}"></div></div><div class="bds">${d.c}/${d.a}</div></div></div>`;});
+  document.getElementById('stBd').innerHTML=bH;S('statsScreen');
+}
+
+// ═══ ACHIEVEMENTS ═══
+function chkAch(p,pc,ok){
+  const e=[];
+  if(p.ta>=1&&!p.ach.includes('fb'))e.push({id:'fb',i:'🩸',t:'First Blood',d:'Answer your first question'});
+  if(pc===100&&st.qs.length>=10&&!p.ach.includes('pf'))e.push({id:'pf',i:'💀',t:'Flawless',d:'100% on 10+ Qs'});
+  if(p.ta>=100&&!p.ach.includes('cn'))e.push({id:'cn',i:'🦴',t:'Centurion',d:'100 questions answered'});
+  if(p.streak>=7&&!p.ach.includes('ws'))e.push({id:'ws',i:'🔥',t:'On Fire',d:'7-day streak'});
+  if(st.mode==='exam'&&pc>=75&&!p.ach.includes('ep'))e.push({id:'ep',i:'🎓',t:'Board Certified',d:'Pass exam ≥75%'});
+  e.forEach((a,i)=>{p.ach.push(a.id);setTimeout(()=>showAch(a),i*3500);});sP(p);
+}
+function showAch(a){const d=document.createElement('div');d.className='apop';d.innerHTML=`<div class="ai">${a.i}</div><div><div class="at">${a.t}</div><div class="ad2">${a.d}</div></div>`;document.body.appendChild(d);setTimeout(()=>d.remove(),3200);}
+
+// ═══ INIT ═══
+window.addEventListener('load',()=>{
+  applyS();updateIcons();
+  setTimeout(()=>document.getElementById('loader').classList.add('hidden'),500);
+  const c=lC();if(c)enterApp();else initDPGrid('dpGrid');
+});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script></body></html>
